@@ -1,2 +1,2 @@
 # scammerSurvivors
-We are creating a vampire survivor style game with a skill tree as long term progression. With the player having the ability to scam merchants.
+The player has rug pulled a dragon, the dragon sends its army after you. Learn magic, upgrade skills, empower yourself, and scam merchants to get enough strength to fight back.
