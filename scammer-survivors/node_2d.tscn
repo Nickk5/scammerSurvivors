@@ -1,0 +1,50 @@
+[gd_scene load_steps=7 format=3 uid="uid://tpcanm2admmn"]
+
+[ext_resource type="Script" uid="uid://c8d6x15m1b1gk" path="res://character_body_2d.gd" id="1_wtcfe"]
+[ext_resource type="Texture2D" uid="uid://cshvuxxylno2" path="res://8-Bit-Character-1.svg" id="2_0e48y"]
+[ext_resource type="Texture2D" uid="uid://bl4sgqfdfngtc" path="res://placeholdermap.png" id="3_epypp"]
+[ext_resource type="Script" uid="uid://b1mwnkiypnul3" path="res://health.gd" id="4_0hol4"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_epypp"]
+bg_color = Color(0.105882354, 0.105882354, 0.12156863, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0hol4"]
+bg_color = Color(0, 1, 0.6117647, 1)
+corner_radius_top_left = 20
+corner_radius_bottom_left = 20
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Player" type="CharacterBody2D" parent="."]
+z_index = 1
+script = ExtResource("1_wtcfe")
+
+[node name="Sprite2D" type="Sprite2D" parent="Player"]
+position = Vector2(-243.00006, 30)
+scale = Vector2(0.6057692, 0.4702381)
+texture = ExtResource("2_0e48y")
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+
+[node name="HealthBar" type="ProgressBar" parent="Player"]
+offset_left = -478.0
+offset_top = -296.0
+offset_right = 465.0
+offset_bottom = -230.0
+theme_override_styles/background = SubResource("StyleBoxFlat_epypp")
+theme_override_styles/fill = SubResource("StyleBoxFlat_0hol4")
+step = 1.0
+value = 50.0
+show_percentage = false
+script = ExtResource("4_0hol4")
+
+[node name="Placeholdermap" type="Sprite2D" parent="."]
+position = Vector2(1361, -1549.0001)
+scale = Vector2(6.4783335, 6.325)
+texture = ExtResource("3_epypp")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
