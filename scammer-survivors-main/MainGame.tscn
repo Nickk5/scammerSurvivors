@@ -1,0 +1,81 @@
+[gd_scene load_steps=10 format=3 uid="uid://tpcanm2admmn"]
+
+[ext_resource type="Script" uid="uid://c8d6x15m1b1gk" path="res://character_body_2d.gd" id="1_8qpgq"]
+[ext_resource type="Texture2D" uid="uid://cshvuxxylno2" path="res://8-Bit-Character-1.svg" id="2_pv6b4"]
+[ext_resource type="Script" uid="uid://b1mwnkiypnul3" path="res://health.gd" id="3_8dnxm"]
+[ext_resource type="Script" uid="uid://bw3pcdbl5wrfr" path="res://xp_bar.gd" id="4_v3hs3"]
+[ext_resource type="Texture2D" uid="uid://bl4sgqfdfngtc" path="res://placeholdermap.png" id="5_x5ji8"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_epypp"]
+bg_color = Color(0.105882354, 0.105882354, 0.12156863, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0hol4"]
+bg_color = Color(0, 1, 0.6117647, 1)
+corner_radius_top_left = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q6r6c"]
+bg_color = Color(0.101960786, 0.101960786, 0.101960786, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kdubu"]
+bg_color = Color(0, 0.8980392, 1, 1)
+
+[node name="Node2D" type="Node2D"]
+position = Vector2(0, -1)
+
+[node name="Player" type="CharacterBody2D" parent="."]
+z_index = 1
+script = ExtResource("1_8qpgq")
+
+[node name="Sprite2D" type="Sprite2D" parent="Player"]
+position = Vector2(-243.00006, 30)
+scale = Vector2(0.6057692, 0.4702381)
+texture = ExtResource("2_pv6b4")
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+
+[node name="HealthBar" type="ProgressBar" parent="Player"]
+offset_left = -306.0
+offset_top = 76.0
+offset_right = -183.0
+offset_bottom = 88.0
+theme_override_styles/background = SubResource("StyleBoxFlat_epypp")
+theme_override_styles/fill = SubResource("StyleBoxFlat_0hol4")
+step = 1.0
+value = 50.0
+show_percentage = false
+script = ExtResource("3_8dnxm")
+
+[node name="XP Bar" type="ProgressBar" parent="Player"]
+offset_left = -495.0
+offset_top = -311.0
+offset_right = 498.0
+offset_bottom = -284.0
+theme_override_styles/background = SubResource("StyleBoxFlat_q6r6c")
+theme_override_styles/fill = SubResource("StyleBoxFlat_kdubu")
+step = 1.0
+value = 50.0
+show_percentage = false
+script = ExtResource("4_v3hs3")
+
+[node name="Level" type="Label" parent="Player"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = 441.0
+offset_top = -309.0
+offset_right = 499.0
+offset_bottom = -286.0
+grow_horizontal = 0
+text = "LV 0"
+
+[node name="Placeholdermap" type="Sprite2D" parent="."]
+position = Vector2(1365, -1549.0001)
+scale = Vector2(6.4783335, 6.325)
+texture = ExtResource("5_x5ji8")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
