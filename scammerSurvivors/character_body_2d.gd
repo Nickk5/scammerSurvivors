@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+@onready var main = get_tree().get_root().get_node("main")
+@onready var enemy = load("res://mob.tscn")
 
 const SPEED = 300.0
 
@@ -32,3 +34,12 @@ func _physics_process(delta: float) -> void:
 #		
 	get_input()
 	move_and_slide()
+
+func spawnEnemy():
+	var instance = enemy.instantiate()
+	instance.spawnPos = Vector2(global_position.x, global_position.y)
+	main.add_child.call_deferred(instance)
+
+func _on_spawn_timer_timeout() -> void:
+	spawnEnemy()
+	pass # Replace with function body.
