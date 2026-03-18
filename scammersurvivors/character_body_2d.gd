@@ -2,10 +2,9 @@ extends CharacterBody2D
 
 @onready var main = get_tree().get_root().get_node("main")
 @onready var enemy = load("res://mob.tscn")
-@onready var cloaker = load("res://cloaker.tscn")
-
+@onready var spriteAnimation = $AnimatedSprite2D
 const SPEED = 300.0
-const CLOAKER_CHANCE = 25
+
 func get_input():
 	var input_direction = Input.get_vector("left", "right", "up", "down")
 	velocity = input_direction.normalized() * SPEED
@@ -37,11 +36,7 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func spawnEnemy():
-	var instance
-	if (randi_range(1,100) <= CLOAKER_CHANCE):
-		instance = cloaker.instantiate()
-	else:
-		instance = enemy.instantiate()
+	var instance = enemy.instantiate()
 	var spawnLoc = randi_range(1, 4)
 	var xOffset
 	var yOffset
