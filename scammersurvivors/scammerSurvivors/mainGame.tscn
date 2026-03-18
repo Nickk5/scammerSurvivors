@@ -1,0 +1,65 @@
+[gd_scene format=3 uid="uid://tpcanm2admmn"]
+
+[ext_resource type="Script" uid="uid://c8d6x15m1b1gk" path="res://character_body_2d.gd" id="1_tb1jv"]
+[ext_resource type="Texture2D" uid="uid://cshvuxxylno2" path="res://8-Bit-Character-1.svg" id="2_2frvq"]
+[ext_resource type="Script" uid="uid://b1mwnkiypnul3" path="res://health.gd" id="3_8nj48"]
+[ext_resource type="Texture2D" uid="uid://bl4sgqfdfngtc" path="res://placeholdermap.png" id="4_ipvu8"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_epypp"]
+bg_color = Color(0.105882354, 0.105882354, 0.12156863, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0hol4"]
+bg_color = Color(0, 1, 0.6117647, 1)
+corner_radius_top_left = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jw2ra"]
+size = Vector2(64, 86)
+
+[node name="main" type="Node2D" unique_id=331035764]
+
+[node name="Player" type="CharacterBody2D" parent="." unique_id=1901481483 groups=["player"]]
+unique_name_in_owner = true
+z_index = 1
+position = Vector2(-1, 0)
+collision_mask = 0
+script = ExtResource("1_tb1jv")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Player" unique_id=665215682]
+scale = Vector2(0.6057692, 0.4702381)
+texture = ExtResource("2_2frvq")
+
+[node name="Camera2D" type="Camera2D" parent="Player" unique_id=650260756]
+
+[node name="HealthBar" type="ProgressBar" parent="Player" unique_id=2021017524]
+offset_left = -478.0
+offset_top = -296.0
+offset_right = 465.0
+offset_bottom = -230.0
+theme_override_styles/background = SubResource("StyleBoxFlat_epypp")
+theme_override_styles/fill = SubResource("StyleBoxFlat_0hol4")
+step = 1.0
+value = 50.0
+show_percentage = false
+script = ExtResource("3_8nj48")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player" unique_id=762503538]
+shape = SubResource("RectangleShape2D_jw2ra")
+
+[node name="spawnTimer" type="Timer" parent="Player" unique_id=122903178]
+wait_time = 2.0
+autostart = true
+
+[node name="Placeholdermap" type="Sprite2D" parent="." unique_id=17402344]
+position = Vector2(1037.9998, -1196)
+scale = Vector2(6.4783335, 6.325)
+texture = ExtResource("4_ipvu8")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1310442430]
+
+[connection signal="timeout" from="Player/spawnTimer" to="Player" method="_on_spawn_timer_timeout"]
