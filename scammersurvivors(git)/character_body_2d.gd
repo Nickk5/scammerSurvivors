@@ -1,10 +1,14 @@
 extends CharacterBody2D
-
+#This is the original repo folder
 @onready var main = get_tree().get_root().get_node("main")
 @onready var enemy = load("res://mob.tscn")
+@onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 
 const SPEED = 300.0
-
+func _ready():
+	print("READY RUNNING")
+	animated_sprite_2d.play("default")
+	print("WORKS")
 func get_input():
 	var input_direction = Input.get_vector("left", "right", "up", "down")
 	velocity = input_direction.normalized() * SPEED
