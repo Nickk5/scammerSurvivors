@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 @onready var main = get_tree().get_root().get_node("main")
 @onready var enemy = load("res://mob.tscn")
-
+@onready var spriteAnimation = $AnimatedSprite2D
 const SPEED = 300.0
 
 func get_input():
