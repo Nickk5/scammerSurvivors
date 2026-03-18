@@ -1,0 +1,18 @@
+63f7b34db8d8cdea90c76aacccf841ec
+::res://::1773851529
+character_body_2d.gd::GDScript::7097191053270298726::1773851188::0::1::::<>CharacterBody2D<><>0<>0<><>::
+health.gd::GDScript::4237462679195252666::1773850976::0::1::::<>ProgressBar<><>0<>0<><>::
+health_bar.gd::GDScript::966365044090477628::1773850976::0::1::::<>ProgressBar<><>0<>0<><>::
+icon.svg::CompressedTexture2D::1030384282624617949::1773850976::1773851010::1::::<><><>0<>0<>08a5314a2ab3efa5f6d4ffa4cbc8c241<>res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex::
+mainGame.tscn::PackedScene::1364675831987138381::1773851300::0::1::::<><><>0<>0<><>::uid://c8d6x15m1b1gk::::res://character_body_2d.gd<>uid://b1mwnkiypnul3::::res://health.gd<>uid://cr3s68r4jml76::::res://xp_bar.gd<>uid://bl4sgqfdfngtc::::res://placeholdermap.png<>uid://cpdflk5x0a03b::::res://ezgif-split (1)/frame_0_delay-0.2s.png<>uid://hp8mos4jxrb0::::res://ezgif-split (1)/frame_1_delay-0.2s.png<>uid://leh03glpjqbd::::res://ezgif-split (1)/frame_2_delay-0.2s.png<>uid://bo46gjwcsflva::::res://ezgif-split (1)/frame_3_delay-0.2s.png
+mob.gd::GDScript::5286050156390323831::1773850976::0::1::::<>CharacterBody2D<><>0<>0<><>::
+mob.tscn::PackedScene::3784754301855343725::1773850976::0::1::::<><><>0<>0<><>::uid://chkuqdxhpvqwt::::res://mob.gd
+placeholdermap.png::CompressedTexture2D::3219469387453547384::1773850976::1773851010::1::::<><><>0<>0<>3ef7457a9788924936073c0cd80d83d8<>res://.godot/imported/placeholdermap.png-48c53c4dd539ae124d35259dfd2123a5.ctex::
+startScreen.tscn::PackedScene::5683537201462948139::1773850976::0::1::::<><><>0<>0<><>::uid://dlh05fbircxyi::::res://start_screen.gd
+start_screen.gd::GDScript::7947361738560248564::1773850976::0::1::::<>Control<><>0<>0<><>::
+xp_bar.gd::GDScript::6025004312689644123::1773850976::0::1::::<>ProgressBar<><>0<>0<><>::
+::res://ezgif-split (1)/::1773851093
+frame_0_delay-0.2s.png::CompressedTexture2D::5832190956571740301::1773851093::1773851093::1::::<><><>0<>0<>1975afc2a90712bc4e44efc7d1e742a7<>res://.godot/imported/frame_0_delay-0.2s.png-1620b85a95f000dbc982bd4b342002e5.ctex::
+frame_1_delay-0.2s.png::CompressedTexture2D::524313426529234919::1773851093::1773851093::1::::<><><>0<>0<>ae7b97f4f7f27d3f89bf71d8ad70a5d4<>res://.godot/imported/frame_1_delay-0.2s.png-a7a46f18cbf84fea8a6d66e2c5510856.ctex::
+frame_2_delay-0.2s.png::CompressedTexture2D::780805935274420477::1773851093::1773851093::1::::<><><>0<>0<>be3f666fdfc71403089dbe57e0e4ebe5<>res://.godot/imported/frame_2_delay-0.2s.png-9d558ad17e20dbec2329b84c7bb083e2.ctex::
+frame_3_delay-0.2s.png::CompressedTexture2D::3430824897843460990::1773851093::1773851093::1::::<><><>0<>0<>e66428b887301c466a8d14f6028e37b8<>res://.godot/imported/frame_3_delay-0.2s.png-ae723d52ac67141a584cbd7a7d21b9c9.ctex::
