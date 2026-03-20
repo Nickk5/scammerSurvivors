@@ -2,10 +2,10 @@ extends CharacterBody2D
 
 @onready var main = get_tree().get_root().get_node("main")
 @onready var enemy = load("res://mob.tscn")
-@onready var skorb = load("res://skOrb.tscn")
-@onready var spriteAnimation = $AnimatedSprite2D
-const SPEED = 300.0
+@onready var cloaker = load("res://cloaker.tscn")
 
+const SPEED = 300.0
+const CLOAKER_CHANCE = 25
 func get_input():
 	var input_direction = Input.get_vector("left", "right", "up", "down")
 	velocity = input_direction.normalized() * SPEED
@@ -35,59 +35,31 @@ func _physics_process(delta: float) -> void:
 #		
 	get_input()
 	move_and_slide()
-func spawnSkorb():
-	var instance = skorb.instantiate()
-	var spawnLoc = randi_range(1, 4)
-	var xOffset
-	var yOffset
-	# Far Right
-	if(spawnLoc == 1):
-		xOffset = randi_range(-4000, -2000)
-		yOffset = randi_range(-4000, 4000)
-	# Far left
-	elif(spawnLoc == 2):
-		xOffset = randi_range(2000, 4000)
-		yOffset = randi_range(-4000, 4000)
-	#Top
-	elif(spawnLoc == 3):
-		xOffset = randi_range(-4000, 4000)
-		yOffset = randi_range(2000, 4000)
-	#Bottom
-	else:
-		xOffset = randi_range(-4000, 4000)
-		yOffset = randi_range(-4000, -2000)
-	instance.spawnPos = Vector2(global_position.x - xOffset, global_position.y - yOffset)
-	main.add_child.call_deferred(instance)
 
 func spawnEnemy():
-	var instance = enemy.instantiate()
+	var instance
+	if (randi_range(1,100) <= CLOAKER_CHANCE):
+		instance = cloaker.instantiate()
+	else:
+		instance = enemy.instantiate()
 	var spawnLoc = randi_range(1, 4)
 	var xOffset
 	var yOffset
-	# Far Right
 	if(spawnLoc == 1):
-		xOffset = randi_range(-1150, -1000)
-		yOffset = randi_range(-750, 750)
-	# Far left
+		xOffset = randi_range(-1250, -1000)
+		yOffset = randi_range(-500, 500)
 	elif(spawnLoc == 2):
-		xOffset = randi_range(1000, 1150)
-		yOffset = randi_range(-750, 750)
-	#Top
+		xOffset = randi_range(1000, 1250)
+		yOffset = randi_range(-500, 500)
 	elif(spawnLoc == 3):
-		xOffset = randi_range(-1150, 1150)
+		xOffset = randi_range(-900, 900)
 		yOffset = randi_range(600, 750)
-	#Bottom
 	else:
-		xOffset = randi_range(-1150, 1150)
+		xOffset = randi_range(-900, 900)
 		yOffset = randi_range(-750, -600)
 	instance.spawnPos = Vector2(global_position.x - xOffset, global_position.y - yOffset)
 	main.add_child.call_deferred(instance)
 
 func _on_spawn_timer_timeout() -> void:
 	spawnEnemy()
-	pass # Replace with function body.
-
-
-func _on_skorb_timer_timeout() -> void:
-	spawnSkorb()
 	pass # Replace with function body.
