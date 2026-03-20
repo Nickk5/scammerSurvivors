@@ -74,11 +74,7 @@ metadata/_edit_group_ = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player" unique_id=1554517944]
 shape = SubResource("RectangleShape2D_jw2ra")
 
-[node name="spawnTimer" type="Timer" parent="Player" unique_id=1823358620]
-wait_time = 2.0
-autostart = true
-
-[node name="healthBar" type="ProgressBar" parent="Player" unique_id=1724397972]
+[node name="healthBar" type="ProgressBar" parent="Player" unique_id=1724397972 groups=["healthBar"]]
 offset_left = -61.0
 offset_top = 64.0
 offset_right = 63.0
@@ -118,6 +114,10 @@ sprite_frames = SubResource("SpriteFrames_q556t")
 wait_time = 10.0
 autostart = true
 
+[node name="spawnTimer" type="Timer" parent="Player" unique_id=1823358620]
+wait_time = 2.0
+autostart = true
+
 [node name="Placeholdermap" type="Sprite2D" parent="." unique_id=1348275500]
 position = Vector2(984, -1196.0001)
 scale = Vector2(6.4783335, 6.325)
@@ -125,5 +125,5 @@ texture = ExtResource("4_ipvu8")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1095720644]
 
-[connection signal="timeout" from="Player/spawnTimer" to="Player" method="_on_spawn_timer_timeout"]
 [connection signal="timeout" from="Player/skorbTimer" to="Player" method="_on_skorb_timer_timeout"]
+[connection signal="timeout" from="Player/spawnTimer" to="Player" method="_on_spawn_timer_timeout"]
