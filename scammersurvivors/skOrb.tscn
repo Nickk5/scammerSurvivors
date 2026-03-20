@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://dkwwd7dpfk86e"]
+
+[ext_resource type="Script" path="res://sk_orb.gd" id="1_opqe7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nwje0"]
+size = Vector2(40, 40)
+
+[node name="SkOrb" type="CharacterBody2D" unique_id=676365697]
+script = ExtResource("1_opqe7")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1112572043]
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+color = Color(0.22092456, 2.7723312e-05, 0.85006505, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=401499050]
+shape = SubResource("RectangleShape2D_nwje0")
+one_way_collision_margin = 0.0
