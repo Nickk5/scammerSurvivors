@@ -25,3 +25,9 @@ func _physics_process(delta: float) -> void:
 	if(global_position.distance_to(player_pos) <=HIT_RADIUS):
 		healthBar.damaged(DAMAGE*delta)
 	move_and_slide()
+	
+	
+func die():
+	print("Fire Spirit extinguished!")
+	# Play death animation or particles here
+	queue_free() # Removes the mob from the game

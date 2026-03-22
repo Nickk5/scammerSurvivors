@@ -5,6 +5,7 @@ extends CharacterBody2D
 @onready var cloaker = load("res://cloaker.tscn")
 @onready var playerAnimation: AnimatedSprite2D = $playerAnimation
 @onready var slashAnimation: AnimatedSprite2D = $Slash
+@onready var slashHitBox = $AttackArea/CollisionShape2D
 
 
 const SPEED = 300.0
@@ -43,13 +44,11 @@ func _physics_process(delta: float) -> void:
 	get_input()
 	move_and_slide()
 	
-	if Input.is_key_pressed(KEY_0):
-		print("SlashAnimation: " + slashAnimation.animation )
-		if slashAnimation.animation != "default":  # your attack anim
+	if slashAnimation.animation != "default":  # your attack anim
 			#slashAnimation.play("default")
 			slashAnimation.play("default")
+			perform_attack()
 
-			print("Playing attack")
 
 				
 		
@@ -59,7 +58,7 @@ func _physics_process(delta: float) -> void:
 func spawnEnemy():
 	var instance
 	if (randi_range(1,100) <= CLOAKER_CHANCE):
-		instance = cloaker.instantiate()
+		instance = enemy.instantiate() #was cloaker before
 	else:
 		instance = enemy.instantiate()
 	var spawnLoc = randi_range(1, 4)
@@ -84,7 +83,35 @@ func _on_spawn_timer_timeout() -> void:
 	spawnEnemy()
 	pass # Replace with function body.
 	
+	
 func _on_slash_finished():
 	if slashAnimation.animation == "default":
 		slashAnimation.animation = "idle"
-		print("slash Animation after playing idle: " + slashAnimation.animation)
+		slashHitBox.disabled = true
+
+func perform_attack():
+	# Returns an Array of PhysicsBody2D (StaticBody, CharacterBody, etc.)
+	print("In the perform attack function")
+	slashHitBox.disabled = false
+	
+
+
+
+			
+
+	
+
+
+func _on_attack_area_area_entered(area: Area2D) -> void:
+	print("in my area")
+	await get_tree().physics_frame
+	
+	if(area.is_in_group("enemy")):
+		print("enemy detected")
+		area.get_parent().queue_free()
+ #var bodies = $AttackArea.get_overlapping_bodies()
+	#print(bodies)
+	#for body in bodies:
+		#print("I touched: ", body.name) # If this doesn't print, it's a Layer/Mask or Timing issue
+		#if body.has_method("die"):
+			#body.die()

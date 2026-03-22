@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://tpcanm2admmn"]
+[gd_scene load_steps=27 format=3 uid="uid://tpcanm2admmn"]
 
 [ext_resource type="Script" uid="uid://c8d6x15m1b1gk" path="res://character_body_2d.gd" id="1_tb1jv"]
 [ext_resource type="Script" uid="uid://b1mwnkiypnul3" path="res://health.gd" id="3_8nj48"]
@@ -90,7 +90,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("13_65bej")
 }, {
-"duration": 1.0,
+"duration": 7.0,
 "texture": ExtResource("14_hfsjs")
 }, {
 "duration": 1.0,
@@ -111,6 +111,9 @@ animations = [{
 "name": &"idle",
 "speed": 5.0
 }]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ypejj"]
+size = Vector2(85, 82)
 
 [node name="main" type="Node2D"]
 
@@ -176,9 +179,16 @@ autostart = true
 position = Vector2(33.500008, -1.0000043)
 scale = Vector2(0.602, 0.5)
 sprite_frames = SubResource("SpriteFrames_f6jf3")
-frame = 9
-frame_progress = 1.0
+frame = 8
+frame_progress = 0.63410616
 speed_scale = 7.0
+
+[node name="AttackArea" type="Area2D" parent="Player" groups=["player"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/AttackArea"]
+position = Vector2(87.5, 0)
+shape = SubResource("RectangleShape2D_ypejj")
+disabled = true
 
 [node name="Placeholdermap" type="Sprite2D" parent="."]
 position = Vector2(984, -1196.0001)
@@ -189,3 +199,4 @@ texture = ExtResource("4_ipvu8")
 
 [connection signal="timeout" from="Player/skorbTimer" to="Player" method="_on_skorb_timer_timeout"]
 [connection signal="timeout" from="Player/spawnTimer" to="Player" method="_on_spawn_timer_timeout"]
+[connection signal="area_entered" from="Player/AttackArea" to="Player" method="_on_attack_area_area_entered"]

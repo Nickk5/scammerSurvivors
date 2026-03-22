@@ -1,2 +1,4 @@
 res://character_body_2d.gd
 res://mainGame.tscn
+res://mob.tscn
+res://mob.gd
