@@ -3,6 +3,9 @@ extends CharacterBody2D
 @onready var main = get_tree().get_root().get_node("main")
 @onready var enemy = load("res://mob.tscn")
 @onready var cloaker = load("res://cloaker.tscn")
+@onready var playerAnimation: AnimatedSprite2D = $playerAnimation
+@onready var slashAnimation: AnimatedSprite2D = $Slash
+
 
 const SPEED = 300.0
 const CLOAKER_CHANCE = 25
@@ -10,6 +13,10 @@ func get_input():
 	var input_direction = Input.get_vector("left", "right", "up", "down")
 	velocity = input_direction.normalized() * SPEED
 
+func _ready():
+	playerAnimation.play("default")
+	slashAnimation.animation = "idle"
+	slashAnimation.animation_finished.connect(_on_slash_finished)
 func _physics_process(delta: float) -> void:
 
 #	var directionX = 0.0
@@ -35,6 +42,19 @@ func _physics_process(delta: float) -> void:
 #		
 	get_input()
 	move_and_slide()
+	
+	if Input.is_key_pressed(KEY_0):
+		print("SlashAnimation: " + slashAnimation.animation )
+		if slashAnimation.animation != "default":  # your attack anim
+			#slashAnimation.play("default")
+			slashAnimation.play("default")
+
+			print("Playing attack")
+
+				
+		
+				
+		
 
 func spawnEnemy():
 	var instance
@@ -63,3 +83,8 @@ func spawnEnemy():
 func _on_spawn_timer_timeout() -> void:
 	spawnEnemy()
 	pass # Replace with function body.
+	
+func _on_slash_finished():
+	if slashAnimation.animation == "default":
+		slashAnimation.animation = "idle"
+		print("slash Animation after playing idle: " + slashAnimation.animation)

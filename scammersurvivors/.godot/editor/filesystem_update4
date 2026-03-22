@@ -1,5 +1,2 @@
-res://cloaker.tscn
-res://startScreen.tscn
-res://cloaker.gd
-res://mob.gd
+res://character_body_2d.gd
 res://mainGame.tscn
