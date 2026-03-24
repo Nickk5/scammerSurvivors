@@ -62,6 +62,7 @@ func _physics_process(delta: float) -> void:
 			#slashAnimation.play("default")
 			slashAnimation.play("default")
 			perform_attack()
+			#hello
 
 
 				
