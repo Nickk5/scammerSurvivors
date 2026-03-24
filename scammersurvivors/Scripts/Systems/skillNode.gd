@@ -5,13 +5,11 @@ extends Node
 # i do not think this needs documentation as reading the code explains the code
 # how to use: refer to the 50 other times i instantiated something
 
-@onready var skillCost
-@onready var prev = Array([])
-
-var cost : int
-var back : Array
-func _ready() -> void:
-	skillCost = cost
+var skCost : int
+var prev : Array
+func _init(cost: int = 0, back: Array = []) -> void:
+	skCost = cost
+	prev = back
 	
 func getPrev() -> Array:
 	return prev
@@ -21,15 +19,27 @@ func setPrev(newPrev) -> Array:
 	return prev
 
 func getCost() -> int:
-	return skillCost
+	return skCost
 
 func setCost(newCost) -> int:
-	cost = newCost
-	return cost
+	skCost = newCost
+	return skCost
 
 func checkReq(arr) -> bool:
-	var tempArr = arr
 	for i in prev:
-		if(!tempArr.has(prev[i])):
+		if(!arr.has(i)):
 			return false
 	return true
+
+func toString() -> void:
+	print(toString1())
+
+func toString1() -> String:
+	var output = str(skCost) + " ["
+	if(prev.is_empty()):
+		pass
+	else:
+		for i in prev:
+			output = output + i.toString1() + " "
+	output = output + "]"
+	return output
