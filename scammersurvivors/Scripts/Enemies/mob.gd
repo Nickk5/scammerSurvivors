@@ -8,10 +8,15 @@ const SPEED = 100.0
 var spawnPos : Vector2
 const DAMAGE = 100
 const HIT_RADIUS = 75
-
+var health = 100
 func _ready():
 	global_position = spawnPos
-
+func damaged(damage):
+	health-=damage
+func on_kill():
+	if(health <= 0):
+		player.get_child(3).addXP(5)
+		queue_free()
 
 func _physics_process(delta: float) -> void:
 
@@ -25,9 +30,4 @@ func _physics_process(delta: float) -> void:
 	if(global_position.distance_to(player_pos) <=HIT_RADIUS):
 		healthBar.damaged(DAMAGE*delta)
 	move_and_slide()
-	
-	
-func die():
-	print("Fire Spirit extinguished!")
-	# Play death animation or particles here
-	queue_free() # Removes the mob from the game
+	on_kill()

@@ -3,6 +3,7 @@ extends CharacterBody2D
 @onready var main = get_tree().get_root().get_node("main")
 @onready var enemy = load("res://Scenes/Enemies/mob.tscn")
 @onready var cloaker = load("res://Scenes/Enemies/cloaker.tscn")
+@onready var merchant = load("res://Scenes/Enemies/obese_merchant.tscn")
 @onready var playerAnimation: AnimatedSprite2D = $playerAnimation
 @onready var slashAnimation: AnimatedSprite2D = $Slash
 @onready var slashHitBox = $AttackArea/CollisionShape2D
@@ -72,7 +73,7 @@ func _physics_process(delta: float) -> void:
 func spawnEnemy():
 	var instance
 	if (randi_range(1,100) <= CLOAKER_CHANCE):
-		instance = enemy.instantiate() #was cloaker before
+		instance = cloaker.instantiate() #was cloaker before
 	else:
 		instance = enemy.instantiate()
 	var spawnLoc = randi_range(1, 4)
@@ -114,8 +115,12 @@ func _on_attack_area_area_entered(area: Area2D) -> void:
 	
 	if(area.is_in_group("enemy")):
 		print("enemy detected")
-		area.get_parent().queue_free()
+		area.get_parent().damaged(100)
 		
 		
 		
 	
+
+
+func _on_merchant_timer_timeout() -> void:
+	pass # Replace with function body.

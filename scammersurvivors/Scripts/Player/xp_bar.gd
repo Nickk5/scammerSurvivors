@@ -5,6 +5,7 @@ var BASE_XP = 20
 var level = 1
 var Max_XP = BASE_XP * level * level;
 var current_xp = 0;
+@onready var label: Label = $"../Label"
 
 
 
@@ -29,13 +30,15 @@ func updateXP(level):
 	print("Level:", level, "Max XP for this level:", Max_XP, "Current XP:", current_xp)
 
 func levelUp():
-	if(current_xp == Max_XP):
+	if(current_xp >= Max_XP):
 		level += 1
 		current_xp = 0
+		label.text = "LV "+str(level)
 		updateXP(level)
 	
 
 func addXP(amount):
 	current_xp += amount	
+	levelUp()
 	updateXP(level)
 	
