@@ -1,8 +1,8 @@
-[gd_scene format=3 uid="uid://cm8fa6uj7xu5h"]
+[gd_scene load_steps=2 format=3 uid="uid://cm8fa6uj7xu5h"]
 
 [ext_resource type="Script" uid="uid://dlh05fbircxyi" path="res://Scripts/Game/start_screen.gd" id="1_438y5"]
 
-[node name="StartScreen" type="Control" unique_id=288780771]
+[node name="StartScreen" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -11,7 +11,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_438y5")
 
-[node name="Button" type="Button" parent="." unique_id=1420440396]
+[node name="Button" type="Button" parent="."]
 layout_mode = 0
 offset_left = 489.0
 offset_top = 265.0
