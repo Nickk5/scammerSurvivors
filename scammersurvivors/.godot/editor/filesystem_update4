@@ -2,3 +2,8 @@ res://character_body_2d.gd
 res://mainGame.tscn
 res://mob.tscn
 res://mob.gd
+res://character.gd
+res://Scenes/Enemies/mob.tscn
+res://start_screen.gd
+res://Scenes/Game/startScreen.tscn
+res://Scenes/Game/mainGame.tscn
