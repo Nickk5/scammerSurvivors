@@ -14,10 +14,9 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 
 [application]
 
-config/name="scammerSurvivors"
+config/name="Scammersurvivors(upgraded Enemies + Spawns)"
 run/main_scene="uid://cm8fa6uj7xu5h"
 config/features=PackedStringArray("4.6", "Forward Plus")
-config/icon="res://icon.svg"
 
 [display]
 
@@ -27,6 +26,8 @@ window/size/viewport_height=1080
 [global_group]
 
 player=""
+healthBar=""
+enemy=""
 
 [input]
 
