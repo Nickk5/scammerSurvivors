@@ -7,6 +7,8 @@ extends CharacterBody2D
 @onready var playerAnimation: AnimatedSprite2D = $playerAnimation
 @onready var slashAnimation: AnimatedSprite2D = $Slash
 @onready var slashHitBox = $AttackArea/CollisionShape2D
+@onready var skillNodes = load("res://Scripts/Systems/skillNode.gd")
+
 
 
 const SPEED = 300.0
@@ -19,6 +21,29 @@ func _ready():
 	playerAnimation.play("default")
 	slashAnimation.animation = "idle"
 	slashAnimation.animation_finished.connect(_on_slash_finished)
+
+func get_closest_node(group_name: String):
+	var nodes = get_tree().get_nodes_in_group(enemy)
+	var min_dist = INF
+	var closest_node = null
+	
+	for node in nodes:
+		var dist = global_position.distance_squared_to(node.global_position)
+		if(dist < min_dist):
+			min_dist = dist
+			closest_node = node
+	return closest_node
+
+func _skillTree():
+	var elemental = skillNodes.new(1, [])
+	var magic = skillNodes.new(1, [elemental])
+	var fire = skillNodes.new(1, [elemental])
+	var ice = skillNodes.new(1, [elemental])
+	var poison = skillNodes.new(1, [elemental])
+	var nature = skillNodes.new(1, [elemental])
+	var elements2 = skillNodes.new(1, [magic, fire, ice, poison, nature])
+	elements2.toString()
+
 func _physics_process(delta: float) -> void:
 
 #	var directionX = 0.0
