@@ -27,7 +27,6 @@ func updateXP(level):
 	Max_XP = BASE_XP * level * level;
 	XP_Bar.max_value = Max_XP
 	XP_Bar.value = current_xp  # update to player's current XP
-	print("Level:", level, "Max XP for this level:", Max_XP, "Current XP:", current_xp)
 
 func levelUp():
 	if(current_xp >= Max_XP):

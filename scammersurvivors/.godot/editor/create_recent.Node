@@ -1,6 +1,12 @@
-Timer
+Control
+Container
+BoxContainer
+HBoxContainer
+VBoxContainer
+Button
 Sprite2D
 CharacterBody2D
+Timer
 CollisionShape2D
 AnimationPlayer
 Area2D

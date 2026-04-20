@@ -1,0 +1,74 @@
+[gd_scene format=3 uid="uid://do1cfd8scgw5t"]
+
+[ext_resource type="Script" uid="uid://biuh8sgullvt8" path="res://Scripts/Game/merchant_ui.gd" id="1_mfwcc"]
+[ext_resource type="Texture2D" uid="uid://bux1cr5a530cf" path="res://Assets/Sprites/Screenshot 2026-03-26 084259.png" id="2_5tqwr"]
+
+[node name="Merchant UI" type="Control" unique_id=541207955 groups=["merchant_ui"]]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -957.0
+offset_top = -577.0
+offset_right = -957.0
+offset_bottom = -577.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_mfwcc")
+metadata/_edit_lock_ = true
+
+[node name="Artifact 1" type="Button" parent="." unique_id=116608998 groups=["artifact_1"]]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.521
+anchor_right = 0.5
+anchor_bottom = 0.521
+offset_left = -40.0
+offset_top = -71.68005
+offset_right = 39.0
+offset_bottom = -40.680054
+size_flags_horizontal = 0
+text = "Artifact 1"
+
+[node name="Artifact 2" type="Button" parent="." unique_id=93688886 groups=["artifact_2"]]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.522
+anchor_right = 0.5
+anchor_bottom = 0.522
+offset_left = -37.0
+offset_top = -15.76001
+offset_right = 42.0
+offset_bottom = 15.23999
+size_flags_vertical = 4
+text = "Artifact 2"
+
+[node name="Artifact 3" type="Button" parent="." unique_id=1880249856 groups=["artifact_3"]]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.523
+anchor_right = 0.5
+anchor_bottom = 0.523
+offset_left = -37.0
+offset_top = 37.159973
+offset_right = 42.0
+offset_bottom = 68.15997
+size_flags_vertical = 4
+text = "Artifact 3"
+metadata/_edit_use_anchors_ = true
+
+[node name="Screenshot20260326084259" type="Sprite2D" parent="." unique_id=924933457]
+show_behind_parent = true
+position = Vector2(-570, 87.000015)
+scale = Vector2(1.6376812, 2.7268293)
+texture = ExtResource("2_5tqwr")
+
+[connection signal="pressed" from="Artifact 1" to="." method="_on_artifact_1_pressed"]
+[connection signal="pressed" from="Artifact 2" to="." method="_on_artifact_2_pressed"]
+[connection signal="pressed" from="Artifact 3" to="." method="_on_artifact_3_pressed"]

@@ -8,7 +8,7 @@ const SPEED = 100.0
 var spawnPos : Vector2
 const DAMAGE = 100
 const HIT_RADIUS = 75
-var health = 100
+var health = 75
 func _ready():
 	global_position = spawnPos
 func damaged(damage):

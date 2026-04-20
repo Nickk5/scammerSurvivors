@@ -1,0 +1,96 @@
+extends Control
+@onready var player = get_tree().get_first_node_in_group("player")
+@onready var artifact_1 = get_tree().get_first_node_in_group("artifact_1")
+@onready var artifact_2 = get_tree().get_first_node_in_group("artifact_2")
+@onready var artifact_3 = get_tree().get_first_node_in_group("artifact_3")
+
+var a1 = 1
+var a2 = 1
+var a3 = 1
+var s1 = 1
+var s2 = 1
+var s3 = 1
+var name_to_artifact_list = ["Glass Canon","Overly Complicated Scaling","Dead Ringer","Repel","Lure","Blade of Grass","Essence of Cactus","Bank Interest","Credit Card"
+]
+var description_to_artifact_list = [
+	"Massively Increases your AOE and Damage at the cost of your max_hp",
+	"Scales your Damage by the formula listed to the left over time (its better than all other artifacts in the long run on god)",
+	"On obtainment fake your death and removes all your scams, but removes 20 max hp",
+	"Stops all enemy spawns for 30 seconds",
+	"Doubles spawn rates for 1 minute",
+	"+500 dmg at the start, but this decreases over time",
+	"Enemies that damage you will die",
+	"Damage increases by 2% every second",
+	"Allows you to take artifacts for free without scams! (who does this belong to though?)"
+]
+var name_to_scam_list = ["Identity Theft","Advance Payment","Skimming","Impersonate Family","Rug Pull","Ponzi Scheme"]
+var description_to_scam_list = [
+	"Identity theft is not a joke jim, millions of people suffer from it every year (gives a random scam debuff)",
+	"No money? PAY WITH YOUR LIFE!! (sets hp to 1)",
+	"Gives an overlay to your screen",
+	"Can you babysit my child real quick? (Increases your hitbox and makes you Alex Approved)",
+	"rug",
+	"Creditor Enemies will now spawn"
+	]
+var total_artifacts = range(0,8)
+var total_scams = range(0,5)
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	get_tree().paused = true
+	var i = 0
+	while(i < len(total_artifacts)):
+		if(player.artifacts.has(total_artifacts[i])):
+			total_artifacts.erase(total_artifacts[i])
+			i-=1
+		i+=1
+	a1 = total_artifacts.pick_random()
+	total_artifacts.erase(a1)
+	a2 = total_artifacts.pick_random()
+	total_artifacts.erase(a2)
+	a3 = total_artifacts.pick_random()
+	total_artifacts.erase(a3)
+	s1 = total_scams.pick_random()
+	s2 = total_scams.pick_random()
+	s3 = total_scams.pick_random()
+	if(a1 == null):
+		artifact_1.text = "no more artifacts left"
+	else:
+		artifact_1.text = name_to_artifact_list[a1]+" - "+description_to_artifact_list[a1]+"\n"+name_to_scam_list[s1]+" - "+description_to_scam_list[s1]
+	if(a2 == null):
+		artifact_2.text = "no more artifacts left"
+	else:
+		artifact_2.text = name_to_artifact_list[a2]+" - "+description_to_artifact_list[a2]+"\n"+name_to_scam_list[s2]+" - "+description_to_scam_list[s2]
+	if(a3 == null):
+		artifact_3.text = "no more artifacts left"
+	else:
+		artifact_3.text = name_to_artifact_list[a3]+" - "+description_to_artifact_list[a3]+"\n"+name_to_scam_list[s3]+" - "+description_to_scam_list[s3]
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+
+
+func _on_artifact_1_pressed() -> void:
+	if(a1 != null):
+		player.artifacts.append(a1)
+		player.scams[s1]+=1
+	get_tree().paused = false
+	queue_free()
+	pass # Replace with function body.
+
+
+func _on_artifact_2_pressed() -> void:
+	if(a2 != null):
+		player.artifacts.append(a2)
+		player.scams[s2]+=1
+	get_tree().paused = false
+	queue_free()
+	pass # Replace with function body.
+
+
+func _on_artifact_3_pressed() -> void:
+	if(a3 != null):
+		player.artifacts.append(a3)
+		player.scams[s3]+=1
+	get_tree().paused = false
+	queue_free()
+	pass # Replace with function body.

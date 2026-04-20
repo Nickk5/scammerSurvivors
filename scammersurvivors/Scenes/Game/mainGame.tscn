@@ -20,7 +20,7 @@
 [ext_resource type="Texture2D" uid="uid://bl4sgqfdfngtc" path="res://Assets/Sprites/Maps/placeholdermap.png" id="18_r7q3j"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jw2ra"]
-size = Vector2(64, 86)
+size = Vector2(128, 98)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tb1jv"]
 corner_radius_top_left = 7
@@ -247,7 +247,7 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ypejj"]
 size = Vector2(128, 98)
 
-[node name="main" type="Node2D" unique_id=1005549420]
+[node name="main" type="Node2D" unique_id=1005549420 groups=["main"]]
 
 [node name="Player" type="CharacterBody2D" parent="." unique_id=707153523 groups=["player"]]
 unique_name_in_owner = true
@@ -260,6 +260,7 @@ metadata/_edit_group_ = true
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=1422285641]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player" unique_id=952396549]
+position = Vector2(5, -1)
 shape = SubResource("RectangleShape2D_jw2ra")
 
 [node name="healthBar" type="ProgressBar" parent="Player" unique_id=1797890277 groups=["healthBar"]]

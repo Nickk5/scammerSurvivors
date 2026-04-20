@@ -3,7 +3,7 @@ extends CharacterBody2D
 @onready var main = get_tree().get_root().get_node("main")
 @onready var enemy = load("res://Scenes/Enemies/mob.tscn")
 @onready var cloaker = load("res://Scenes/Enemies/cloaker.tscn")
-@onready var merchant = load("res://Scenes/Enemies/obese_merchant.tscn")
+@onready var merchant = load("res://Scenes/Enemies/merchant.tscn")
 @onready var playerAnimation: AnimatedSprite2D = $playerAnimation
 @onready var slashAnimation: AnimatedSprite2D = $Slash
 @onready var slashHitBox = $AttackArea/CollisionShape2D
@@ -11,16 +11,22 @@ extends CharacterBody2D
 
 const SPEED = 300.0
 const CLOAKER_CHANCE = 25
+const total_scams = 11
+var artifacts = []
+var scams = []
+var base_dmg = 50
 func get_input():
 	var input_direction = Input.get_vector("left", "right", "up", "down")
 	velocity = input_direction.normalized() * SPEED
 
 func _ready():
+	scams.resize(total_scams)
+	scams.fill(0)
 	playerAnimation.play("default")
 	slashAnimation.animation = "idle"
 	slashAnimation.animation_finished.connect(_on_slash_finished)
 func _physics_process(delta: float) -> void:
-
+	var dmg = base_dmg
 #	var directionX = 0.0
 #	var directionY = 0.0
 #	if(Input.is_key_pressed(KEY_A)):
@@ -41,10 +47,9 @@ func _physics_process(delta: float) -> void:
 #	if(directionY == 0):
 #		velocity.x = (directionX * SPEED)
 #		velocity.y = 1
-#		
+#	//MOVEMENT
 	get_input()
 	move_and_slide()
-	
 	if Input.is_action_just_pressed("up"):
 		playerAnimation.play("idle_forward");
 	elif Input.is_action_just_pressed("down"):
@@ -53,8 +58,8 @@ func _physics_process(delta: float) -> void:
 		playerAnimation.play("idle_left")
 	elif Input.is_action_just_pressed("right"):
 		playerAnimation.play("idle_right")
-
-			
+	#ARTIFACTS AND SCAMS
+		
 
 	
 	
@@ -110,11 +115,9 @@ func perform_attack():
 	slashHitBox.disabled = false
 
 func _on_attack_area_area_entered(area: Area2D) -> void:
-	print("in my area")
 	await get_tree().physics_frame
 	
 	if(area.is_in_group("enemy")):
-		print("enemy detected")
 		area.get_parent().damaged(100)
 		
 		
@@ -123,4 +126,21 @@ func _on_attack_area_area_entered(area: Area2D) -> void:
 
 
 func _on_merchant_timer_timeout() -> void:
-	pass # Replace with function body.
+	var instance = merchant.instantiate()
+	var spawnLoc = randi_range(1, 4)
+	var xOffset
+	var yOffset
+	if(spawnLoc == 1):
+		xOffset = randi_range(-1250, -1000)
+		yOffset = randi_range(-500, 500)
+	elif(spawnLoc == 2):
+		xOffset = randi_range(1000, 1250)
+		yOffset = randi_range(-500, 500)
+	elif(spawnLoc == 3):
+		xOffset = randi_range(-900, 900)
+		yOffset = randi_range(600, 750)
+	else:
+		xOffset = randi_range(-900, 900)
+		yOffset = randi_range(-750, -600)
+	instance.global_position = Vector2(global_position.x - xOffset, global_position.y - yOffset)
+	main.add_child.call_deferred(instance)

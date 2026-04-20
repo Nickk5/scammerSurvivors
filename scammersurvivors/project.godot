@@ -28,6 +28,10 @@ window/size/viewport_height=1080
 player=""
 healthBar=""
 enemy=""
+merchant_ui=""
+artifact_1=""
+artifact_2=""
+artifact_3=""
 
 [input]
 
