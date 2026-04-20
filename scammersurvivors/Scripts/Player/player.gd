@@ -18,12 +18,10 @@ func get_input():
 	velocity = input_direction.normalized() * SPEED
 
 func _ready():
-	playerAnimation.play("default")
 	slashAnimation.animation = "idle"
-	slashAnimation.animation_finished.connect(_on_slash_finished)
 
 func get_closest_node(group_name: String):
-	var nodes = get_tree().get_nodes_in_group(enemy)
+	var nodes = get_tree().get_nodes_in_group(group_name)
 	var min_dist = INF
 	var closest_node = null
 	
@@ -69,7 +67,6 @@ func _physics_process(delta: float) -> void:
 #		
 	get_input()
 	move_and_slide()
-	
 	if Input.is_action_just_pressed("up"):
 		playerAnimation.play("idle_forward");
 	elif Input.is_action_just_pressed("down"):
@@ -78,23 +75,7 @@ func _physics_process(delta: float) -> void:
 		playerAnimation.play("idle_left")
 	elif Input.is_action_just_pressed("right"):
 		playerAnimation.play("idle_right")
-
-			
-
-	
-	
-	
-	if slashAnimation.animation != "default":  # your attack anim
-			#slashAnimation.play("default")
-			slashAnimation.play("default")
-			perform_attack()
-
-
-				
 		
-				
-		
-
 func spawnEnemy():
 	var instance
 	if (randi_range(1,100) <= CLOAKER_CHANCE):
@@ -127,11 +108,12 @@ func _on_spawn_timer_timeout() -> void:
 func _on_slash_finished():
 	if slashAnimation.animation == "default":
 		slashAnimation.animation = "idle"
+		slashAnimation.stop()
 		slashHitBox.disabled = true
+		print("Stop")
 
 func perform_attack():
 	# Returns an Array of PhysicsBody2D (StaticBody, CharacterBody, etc.)
-	print("In the perform attack function")
 	slashHitBox.disabled = false
 
 func _on_attack_area_area_entered(area: Area2D) -> void:
@@ -144,8 +126,17 @@ func _on_attack_area_area_entered(area: Area2D) -> void:
 		
 		
 		
-	
 
 
 func _on_merchant_timer_timeout() -> void:
-	pass # Replace with function body.
+	pass
+
+
+func _on_slash_timer_timeout() -> void:
+	slashAnimation.play("default")
+	perform_attack()
+	if(get_closest_node("enemy") != null):
+		slashAnimation.look_at(get_closest_node("enemy").global_position)
+		slashHitBox.look_at(get_closest_node("enemy").global_position)
+	await slashAnimation.animation_finished
+	_on_slash_finished()
