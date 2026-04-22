@@ -23,6 +23,9 @@ func _physics_process(delta: float) -> void:
 	velocity = angle * SPEED
 	if(global_position.distance_to(player_pos) <=HIT_RADIUS):
 		healthBar.damaged(DAMAGE*delta)
+		if(player.cactus):
+			health = 0
+			on_kill()
 	if(player_pos.distance_to(global_position) <= CHARGE_DISTANCE):
 		velocity*=SPEED_UP
 		if(!$AudioStreamPlayer2D.playing):

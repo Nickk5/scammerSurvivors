@@ -29,5 +29,8 @@ func _physics_process(delta: float) -> void:
 	velocity = angle * SPEED
 	if(global_position.distance_to(player_pos) <=HIT_RADIUS):
 		healthBar.damaged(DAMAGE*delta)
+		if(player.cactus):
+			health = 0
+			on_kill()
 	move_and_slide()
 	on_kill()

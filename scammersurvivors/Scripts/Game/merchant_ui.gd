@@ -10,25 +10,25 @@ var a3 = 1
 var s1 = 1
 var s2 = 1
 var s3 = 1
-var name_to_artifact_list = ["Glass Canon","Overly Complicated Scaling","Dead Ringer","Repel","Lure","Blade of Grass","Essence of Cactus","Bank Interest","Credit Card"
+var name_to_artifact_list = ["Credit Card","Blade of Grass","Dead Ringer","Repel","Lure","Long Term Scaling","Essence of Cactus","Bank Interest","Glass Canon"
 ]
 var description_to_artifact_list = [
-	"Massively Increases your AOE and Damage at the cost of your max_hp",
-	"Scales your Damage by the formula listed to the left over time (its better than all other artifacts in the long run on god)",
+	"Allows you to take artifacts for free without scams! (who does this belong to though?)",
+	"+500 additional dmg, but this decreases with longer sessions",
 	"On obtainment fake your death and removes all your scams, but removes 20 max hp",
 	"Stops all enemy spawns for 30 seconds",
 	"Doubles spawn rates for 1 minute",
-	"+500 dmg at the start, but this decreases over time",
+	"Scales your Damage over a long period of time. May benefit you towards the end",
 	"Enemies that damage you will die",
 	"Damage increases by 2% every second",
-	"Allows you to take artifacts for free without scams! (who does this belong to though?)"
+	"Masssively increases Damage and AOE at the cost of your hp"
 ]
 var name_to_scam_list = ["Identity Theft","Advance Payment","Skimming","Impersonate Family","Rug Pull","Ponzi Scheme"]
 var description_to_scam_list = [
 	"Identity theft is not a joke jim, millions of people suffer from it every year (gives a random scam debuff)",
 	"No money? PAY WITH YOUR LIFE!! (sets hp to 1)",
 	"Gives an overlay to your screen",
-	"Can you babysit my child real quick? (Increases your hitbox and makes you Alex Approved)",
+	"Can you babysit my child real quick? (Increases your hitbox)",
 	"rug",
 	"Creditor Enemies will now spawn"
 	]
@@ -56,14 +56,20 @@ func _ready() -> void:
 		artifact_1.text = "no more artifacts left"
 	else:
 		artifact_1.text = name_to_artifact_list[a1]+" - "+description_to_artifact_list[a1]+"\n"+name_to_scam_list[s1]+" - "+description_to_scam_list[s1]
+		if(player.credit_card):
+			artifact_1.text = name_to_artifact_list[a1]+" - "+description_to_artifact_list[a1]
 	if(a2 == null):
 		artifact_2.text = "no more artifacts left"
 	else:
 		artifact_2.text = name_to_artifact_list[a2]+" - "+description_to_artifact_list[a2]+"\n"+name_to_scam_list[s2]+" - "+description_to_scam_list[s2]
+		if(player.credit_card):
+			artifact_2.text = name_to_artifact_list[a2]+" - "+description_to_artifact_list[a2]
 	if(a3 == null):
 		artifact_3.text = "no more artifacts left"
 	else:
 		artifact_3.text = name_to_artifact_list[a3]+" - "+description_to_artifact_list[a3]+"\n"+name_to_scam_list[s3]+" - "+description_to_scam_list[s3]
+		if(player.credit_card):
+			artifact_3.text = name_to_artifact_list[a3]+" - "+description_to_artifact_list[a3]
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
@@ -73,6 +79,8 @@ func _on_artifact_1_pressed() -> void:
 	if(a1 != null):
 		player.artifacts.append(a1)
 		player.scams[s1]+=1
+		if(player.credit_card):
+			player.scams[s1]-=1
 	get_tree().paused = false
 	queue_free()
 	pass # Replace with function body.
@@ -82,6 +90,8 @@ func _on_artifact_2_pressed() -> void:
 	if(a2 != null):
 		player.artifacts.append(a2)
 		player.scams[s2]+=1
+		if(player.credit_card):
+			player.scams[s2]-=1
 	get_tree().paused = false
 	queue_free()
 	pass # Replace with function body.
@@ -91,6 +101,8 @@ func _on_artifact_3_pressed() -> void:
 	if(a3 != null):
 		player.artifacts.append(a3)
 		player.scams[s3]+=1
+		if(player.credit_card):
+			player.scams[s3]-=1
 	get_tree().paused = false
 	queue_free()
 	pass # Replace with function body.
