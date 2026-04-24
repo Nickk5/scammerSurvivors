@@ -8,27 +8,39 @@ extends CharacterBody2D
 @onready var slashAnimation: AnimatedSprite2D = $Slash
 @onready var slashHitBox = $AttackArea/CollisionShape2D
 @onready var healthBar = get_tree().get_first_node_in_group("healthBar")
-
+@onready var enemy_timer = get_tree().get_first_node_in_group("enemy_timer")
+@onready var dmg_label = get_tree().get_first_node_in_group("dmg_label")
 const SPEED = 300.0
 const CLOAKER_CHANCE = 25
 const total_scams = 11
 var artifacts = []
 var scams = []
-var base_dmg = 10
+var base_dmg = 50
 var dmg = 0
 var additional_dmg = 0
+var start_time
+var seconds
+
 var credit_card = false
 var used_dead_ringer = false
 var cactus = false
 var long_term_scaling = false
 var glass_canon = false
+var repel = 0
+var lure = 0
+var repel_time
+var lure_time
+var bank_time
+var bank
 func get_input():
 	var input_direction = Input.get_vector("left", "right", "up", "down")
 	velocity = input_direction.normalized() * SPEED
 
 func _ready():
-	scams.resize(total_scams)
+	scams.resize(total_scams+1)
 	scams.fill(0)
+	start_time = Time.get_ticks_msec()
+	seconds = 0
 	playerAnimation.play("default")
 	slashAnimation.animation = "idle"
 	slashAnimation.animation_finished.connect(_on_slash_finished)
@@ -70,30 +82,59 @@ func _physics_process(delta: float) -> void:
 		if(i == 0):
 			credit_card = true;
 		if(i == 1):
-			additional_dmg = 500
+			additional_dmg = max(0,500-(Time.get_ticks_msec()-start_time)/1000)
 		if(i == 2):
 			if(not used_dead_ringer):
 				scams = []
-				scams.resize(total_scams)
+				scams.resize(total_scams+1)
 				healthBar.MAX_HP -=20
+				healthBar.hp = min(healthBar.hp,healthBar.MAX_HP)
 		if(i==3):
-			pass
+			if(lure == 0): 
+				lure_time = Time.get_ticks_msec()
+				enemy_timer.wait_time = 0.4
+				lure = 1
+			if(lure == 1):
+				if(Time.get_ticks_msec()-lure_time>=60000):
+					enemy_timer.wait_time = 2
+					lure = 2
 		if(i == 4):
-			pass
+			if(repel == 0): 
+				repel_time = Time.get_ticks_msec()
+				enemy_timer.wait_time = 900
+				repel = 1
+			if(repel == 1):
+				if(Time.get_ticks_msec()-repel_time>=30000):
+					enemy_timer.wait_time = 2
+					repel = 2
 		if(i == 5):
 			long_term_scaling = true
 		if(i == 6):
 			cactus = true
 		if(i == 7):
-			base_dmg*=1.02**(1/delta)
+			if(not bank):
+				bank = true
+				bank_time = Time.get_ticks_msec()
+			else:
+				if(floor(Time.get_ticks_msec()-bank_time) > seconds):
+					seconds+=1
+					base_dmg*=1.0004
+				
 		if(i == 8):
+			if(not glass_canon):
+				healthBar.MAX_HP-=70
+				healthBar.hp = min(healthBar.hp,healthBar.MAX_HP)
 			glass_canon = true
 		dmg = base_dmg
 		if(glass_canon):
 			dmg*=20
 		dmg+=additional_dmg
 		if(long_term_scaling):
-			dmg = 0
+			if(Time.get_ticks_msec()-start_time <= 3600000):
+				dmg = 0
+			else:
+				dmg*=1.01
+		dmg_label.text = "DMG: "+str(dmg)
 	if slashAnimation.animation != "default":  # your attack anim
 			#slashAnimation.play("default")
 			slashAnimation.play("default")
@@ -149,7 +190,6 @@ func _on_attack_area_area_entered(area: Area2D) -> void:
 	
 	if(area.is_in_group("enemy")):
 		area.get_parent().damaged(dmg)
-		
 		
 		
 	

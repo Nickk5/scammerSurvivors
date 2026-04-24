@@ -10,17 +10,17 @@ var a3 = 1
 var s1 = 1
 var s2 = 1
 var s3 = 1
-var name_to_artifact_list = ["Credit Card","Blade of Grass","Dead Ringer","Repel","Lure","Long Term Scaling","Essence of Cactus","Bank Interest","Glass Canon"
+var name_to_artifact_list = ["Credit Card","Blade of Grass","Dead Ringer","Lure","Repel","Long Term Scaling","Essence of Cactus","Bank Interest","Glass Canon"
 ]
 var description_to_artifact_list = [
 	"Allows you to take artifacts for free without scams! (who does this belong to though?)",
 	"+500 additional dmg, but this decreases with longer sessions",
 	"On obtainment fake your death and removes all your scams, but removes 20 max hp",
+	"Increases merchant spawn rates for 1 minutes",
 	"Stops all enemy spawns for 30 seconds",
-	"Doubles spawn rates for 1 minute",
 	"Scales your Damage over a long period of time. May benefit you towards the end",
 	"Enemies that damage you will die",
-	"Damage increases by 2% every second",
+	"Damage increases by 0.04% every second",
 	"Masssively increases Damage and AOE at the cost of your hp"
 ]
 var name_to_scam_list = ["Identity Theft","Advance Payment","Skimming","Impersonate Family","Rug Pull","Ponzi Scheme"]
@@ -32,8 +32,8 @@ var description_to_scam_list = [
 	"rug",
 	"Creditor Enemies will now spawn"
 	]
-var total_artifacts = range(0,8)
-var total_scams = range(0,5)
+var total_artifacts = range(0,9)
+var total_scams = range(0,6)
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	get_tree().paused = true

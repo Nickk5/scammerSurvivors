@@ -1,5 +1,5 @@
 63f7b34db8d8cdea90c76aacccf841ec
-::res://::1776871651
+::res://::1777044576
 ::res://Assets/::1774367530
 ::res://Assets/Audio/::1774367566
 scammersurvivors_payday-2-sound-cloaker-scream.mp3::AudioStreamMP3::5496187619249539696::1774367530::1774367566::1::::<><><>0<>0<>fa2146ca8a77ec843ab8dc9d3367b1a2<>res://.godot/imported/scammersurvivors_payday-2-sound-cloaker-scream.mp3-46aadeba7f8b10f7b2bde829ec891cd0.mp3str::
@@ -28,30 +28,30 @@ frame_3_delay-0.2s.png::CompressedTexture2D::3430824897843460990::1774367530::17
 placeholdermap.png::CompressedTexture2D::3219469387453547384::1774367530::1774367566::1::::<><><>0<>0<>cb31e424a88cd898c3d47e7217548319<>res://.godot/imported/placeholdermap.png-ad438e3a6b0c5be325be3265ca44d0e7.ctex::
 ::res://scammerSurvivors/::1774020789
 ::res://Scenes/::1774367530
-::res://Scenes/Enemies/::1775579879
+::res://Scenes/Enemies/::1776875972
 cloaker.tscn::PackedScene::8922172427083144387::1775058104::0::1::::<><><>0<>0<><>::uid://dxoymcvmuubuh::::res://Scripts/Enemies/cloaker.gd<>uid://dpb5bqnjdl641::::res://Assets/Sprites/Screenshot 2026-03-16 224446 (1).png<>uid://ckknn3udwckds::::res://Assets/Audio/scammersurvivors_payday-2-sound-cloaker-scream.mp3
-merchant.tscn::PackedScene::2375262622905408309::1775579879::0::1::::<><><>0<>0<><>::uid://bux1cr5a530cf::::res://Assets/Sprites/Screenshot 2026-03-26 084259.png<>uid://odnvdj4ui5mm::::res://Scripts/Enemies/merchant.gd
+merchant.tscn::PackedScene::2375262622905408309::1776875972::0::1::::<><><>0<>0<><>::uid://bux1cr5a530cf::::res://Assets/Sprites/Screenshot 2026-03-26 084259.png<>uid://odnvdj4ui5mm::::res://Scripts/Enemies/merchant.gd
 mob.tscn::PackedScene::3784754301855343725::1775576161::0::1::::<><><>0<>0<><>::uid://chkuqdxhpvqwt::::res://Scripts/Enemies/mob.gd<>uid://dextjdeub3pym::::res://Assets/Sprites/Animations/firespririt.webp
-::res://Scenes/Game/::1776704353
+::res://Scenes/Game/::1776876605
 mainGame.tscn::PackedScene::1364675831987138381::1776704353::0::1::::<><><>0<>0<><>::uid://5ntxg03mc7a8::::res://Scripts/Player/player.gd<>uid://b1mwnkiypnul3::::res://Scripts/Player/health.gd<>uid://cr3s68r4jml76::::res://Scripts/Player/xp_bar.gd<>uid://hp8mos4jxrb0::::res://Assets/Sprites/Animations/playerRight1/frame_1_delay-0.2s.png<>uid://leh03glpjqbd::::res://Assets/Sprites/Animations/playerRight1/frame_2_delay-0.2s.png<>uid://bo46gjwcsflva::::res://Assets/Sprites/Animations/playerRight1/frame_3_delay-0.2s.png<>uid://du8nplr3tm732::::res://Assets/Sprites/Animations/playerAnimation.v4.png<>uid://e4ap2xmufkvj::::res://Assets/Sprites/Animations/attack1/frame_00_delay-0.1s.png<>uid://du3og34gkllph::::res://Assets/Sprites/Animations/attack1/frame_01_delay-0.1s.png<>uid://hg1qy4namw6e::::res://Assets/Sprites/Animations/attack1/frame_02_delay-0.1s.png<>uid://citpofmginume::::res://Assets/Sprites/Animations/attack1/frame_03_delay-0.1s.png<>uid://c42lmnm2ihl1b::::res://Assets/Sprites/Animations/attack1/frame_04_delay-0.1s.png<>uid://4t2nk5bef4uk::::res://Assets/Sprites/Animations/attack1/frame_05_delay-0.1s.png<>uid://c6okol8q03ah2::::res://Assets/Sprites/Animations/attack1/frame_07_delay-0.1s.png<>uid://daadqq1ij2pss::::res://Assets/Sprites/Animations/attack1/frame_06_delay-0.1s.png<>uid://d18oa8ccv2t48::::res://Assets/Sprites/Animations/attack1/frame_08_delay-0.1s.png<>uid://dlo65md4t6bsb::::res://Assets/Sprites/Animations/attack1/frame_09_delay-0.1s.png<>uid://bl4sgqfdfngtc::::res://Assets/Sprites/Maps/placeholdermap.png
-merchant_ui.tscn::PackedScene::8195710255941736887::1775751891::0::1::::<><><>0<>0<><>::uid://biuh8sgullvt8::::res://Scripts/Game/merchant_ui.gd<>uid://bux1cr5a530cf::::res://Assets/Sprites/Screenshot 2026-03-26 084259.png
+merchant_ui.tscn::PackedScene::8195710255941736887::1776876605::0::1::::<><><>0<>0<><>::uid://biuh8sgullvt8::::res://Scripts/Game/merchant_ui.gd<>uid://bux1cr5a530cf::::res://Assets/Sprites/Screenshot 2026-03-26 084259.png
 startScreen.tscn::PackedScene::5683537201462948139::1775577705::0::1::::<><><>0<>0<><>::uid://dlh05fbircxyi::::res://Scripts/Game/start_screen.gd<>uid://bux1cr5a530cf::::res://Assets/Sprites/Screenshot 2026-03-26 084259.png
 ::res://Scenes/Items/::1774367530
 skOrb.tscn::PackedScene::7907909615341782118::1774367530::0::1::::<><><>0<>0<><>::uid://cd6rharbd77pm::::res://Scripts/Items/sk_orb.gd
 ::res://Scripts/::1774889412
-::res://Scripts/Enemies/::1775749703
-cloaker.gd::GDScript::8803985518724471507::1774369977::0::1::::<>CharacterBody2D<><>0<>0<><>::
+::res://Scripts/Enemies/::1776876443
+cloaker.gd::GDScript::8803985518724471507::1776876443::0::1::::<>CharacterBody2D<><>0<>0<><>::
 merchant.gd::GDScript::989663939590593276::1775749703::0::1::::<>CharacterBody2D<><>0<>0<><>::
-mob.gd::GDScript::5286050156390323831::1775058478::0::1::::<>CharacterBody2D<><>0<>0<><>::
-::res://Scripts/Game/::1776704193
-merchant_ui.gd::GDScript::2989703893639777027::1776704193::0::1::::<>Control<><>0<>0<><>::
+mob.gd::GDScript::5286050156390323831::1776876443::0::1::::<>CharacterBody2D<><>0<>0<><>::
+::res://Scripts/Game/::1776876443
+merchant_ui.gd::GDScript::2989703893639777027::1776876443::0::1::::<>Control<><>0<>0<><>::
 start_screen.gd::GDScript::7947361738560248564::1775577705::0::1::::<>Control<><>0<>0<><>::
 ::res://Scripts/Items/::1774367530
 sk_orb.gd::GDScript::5048448324422931226::1774367530::0::1::::<>CharacterBody2D<><>0<>0<><>::
-::res://Scripts/Player/::1776704193
+::res://Scripts/Player/::1776876164
 health.gd::GDScript::4237462679195252666::1776704193::0::1::::<>ProgressBar<><>0<>0<><>::
 health_bar.gd::GDScript::966365044090477628::1774367530::0::1::::<>ProgressBar<><>0<>0<><>::
-player.gd::GDScript::2133697271114678833::1776704193::0::1::::<>CharacterBody2D<><>0<>0<><>::
+player.gd::GDScript::2133697271114678833::1776876164::0::1::::<>CharacterBody2D<><>0<>0<><>::
 xp_bar.gd::GDScript::6025004312689644123::1775749855::0::1::::<>ProgressBar<><>0<>0<><>::
 ::res://Scripts/Systems/::1774539335
 skillNode.gd::GDScript::5520639115971336480::1774539335::0::1::::SkillNode<>Node<><>0<>0<><>::

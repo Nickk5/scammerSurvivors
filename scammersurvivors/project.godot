@@ -32,6 +32,8 @@ merchant_ui=""
 artifact_1=""
 artifact_2=""
 artifact_3=""
+enemy_timer=""
+dmg_label=""
 
 [input]
 
