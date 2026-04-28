@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://pbkrfcqjgl5k"]
+
+[ext_resource type="Script" uid="uid://chkuqdxhpvqwt" path="res://Scripts/Enemies/mob.gd" id="1_efi8i"]
+[ext_resource type="Texture2D" uid="uid://diix8wpw72x5e" path="res://Assets/Sprites/Screenshot 2026-04-28 090114.png" id="2_3taum"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ldhqc"]
+size = Vector2(464, 358)
+
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=1440264715]
+script = ExtResource("1_efi8i")
+SPEED = 250.0
+health = 1000
+xp = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=28187494]
+position = Vector2(7.867813e-06, -1.5000021)
+scale = Vector2(1.7633588, 1.6244344)
+texture = ExtResource("2_3taum")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D" unique_id=1873893882]
+
+[node name="HurtBox" type="Area2D" parent="." unique_id=638435318]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox" unique_id=338205270]
+position = Vector2(0, -2)
+shape = SubResource("RectangleShape2D_ldhqc")

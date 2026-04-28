@@ -1,4 +1,8 @@
-res://Scenes/Enemies/merchant.tscn
-res://Scripts/Game/merchant_ui.gd
-res://Scripts/Player/player.gd
 res://Scenes/Game/mainGame.tscn
+res://Scripts/Player/player.gd
+res://Scenes/Enemies/mob.tscn
+res://Scripts/Enemies/mob.gd
+res://rug.tscn
+res://Scripts/Enemies/cloaker.gd
+res://Scenes/Enemies/cloaker.tscn
+res://Scenes/Enemies/rug.tscn

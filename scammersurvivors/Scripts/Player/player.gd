@@ -4,6 +4,7 @@ extends CharacterBody2D
 @onready var enemy = load("res://Scenes/Enemies/mob.tscn")
 @onready var cloaker = load("res://Scenes/Enemies/cloaker.tscn")
 @onready var merchant = load("res://Scenes/Enemies/merchant.tscn")
+@onready var rug = load("res://Scenes/Enemies/rug.tscn")
 @onready var playerAnimation: AnimatedSprite2D = $playerAnimation
 @onready var slashAnimation: AnimatedSprite2D = $Slash
 @onready var slashHitBox = $AttackArea/CollisionShape2D
@@ -12,7 +13,7 @@ extends CharacterBody2D
 @onready var dmg_label = get_tree().get_first_node_in_group("dmg_label")
 const SPEED = 300.0
 const CLOAKER_CHANCE = 25
-const total_scams = 11
+const total_scams = 6
 var artifacts = []
 var scams = []
 var base_dmg = 50
@@ -20,7 +21,7 @@ var dmg = 0
 var additional_dmg = 0
 var start_time
 var seconds
-
+#Artifact variables
 var credit_card = false
 var used_dead_ringer = false
 var cactus = false
@@ -37,7 +38,7 @@ func get_input():
 	velocity = input_direction.normalized() * SPEED
 
 func _ready():
-	scams.resize(total_scams+1)
+	scams.resize(total_scams)
 	scams.fill(0)
 	start_time = Time.get_ticks_msec()
 	seconds = 0
@@ -77,7 +78,7 @@ func _physics_process(delta: float) -> void:
 		playerAnimation.play("idle_left")
 	elif Input.is_action_just_pressed("right"):
 		playerAnimation.play("idle_right")
-	#ARTIFACTS AND SCAMS
+	#ARTIFACTS
 	for i in artifacts:
 		if(i == 0):
 			credit_card = true;
@@ -86,7 +87,8 @@ func _physics_process(delta: float) -> void:
 		if(i == 2):
 			if(not used_dead_ringer):
 				scams = []
-				scams.resize(total_scams+1)
+				scams.resize(total_scams)
+				scams.fill(0)
 				healthBar.MAX_HP -=20
 				healthBar.hp = min(healthBar.hp,healthBar.MAX_HP)
 		if(i==3):
@@ -135,6 +137,27 @@ func _physics_process(delta: float) -> void:
 			else:
 				dmg*=1.01
 		dmg_label.text = "DMG: "+str(dmg)
+	#SCAMS
+	for i in range(len(scams)):
+		for j in range(scams[i]):
+			if(i == 0):
+				scams[0]-=1
+				scams[randi_range(1,total_scams-1)]+=1
+			if(i == 1):
+				healthBar.damaged(healthBar.hp-1)
+				scams[1]-=1
+			if(i == 2):
+				pass
+			if(i == 3):
+				pass
+			if(i == 4):
+				var instance = rug.instantiate()
+				instance.global_position = Vector2(global_position.x+1000,global_position.y+1000)
+				main.add_child(instance)
+				scams[4]-=1
+			if(i == 5):
+				pass
+			
 	if slashAnimation.animation != "default":  # your attack anim
 			#slashAnimation.play("default")
 			slashAnimation.play("default")
