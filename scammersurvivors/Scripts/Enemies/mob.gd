@@ -7,7 +7,6 @@ extends CharacterBody2D
 
 var spawnPos : Vector2
 @export var DAMAGE = 100
-@export var HIT_RADIUS = 75
 @export var health = 75
 @export var xp = 5
 func _ready():

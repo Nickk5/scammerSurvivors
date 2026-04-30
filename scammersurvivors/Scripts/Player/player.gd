@@ -5,6 +5,7 @@ extends CharacterBody2D
 @onready var cloaker = load("res://Scenes/Enemies/cloaker.tscn")
 @onready var merchant = load("res://Scenes/Enemies/merchant.tscn")
 @onready var rug = load("res://Scenes/Enemies/rug.tscn")
+@onready var creditor = load("res://Scenes/Enemies/creditor.tscn")
 @onready var playerAnimation: AnimatedSprite2D = $playerAnimation
 @onready var slashAnimation: AnimatedSprite2D = $Slash
 @onready var slashHitBox = $AttackArea/CollisionShape2D
@@ -13,10 +14,10 @@ extends CharacterBody2D
 @onready var dmg_label = get_tree().get_first_node_in_group("dmg_label")
 const SPEED = 300.0
 const CLOAKER_CHANCE = 25
-const total_scams = 6
+const total_scams = 5
 var artifacts = []
 var scams = []
-var base_dmg = 50
+var base_dmg = 100
 var dmg = 0
 var additional_dmg = 0
 var start_time
@@ -33,6 +34,9 @@ var repel_time
 var lure_time
 var bank_time
 var bank
+# Scam variables
+var creditors = 0
+var skims = 1
 func get_input():
 	var input_direction = Input.get_vector("left", "right", "up", "down")
 	velocity = input_direction.normalized() * SPEED
@@ -91,6 +95,9 @@ func _physics_process(delta: float) -> void:
 				scams.fill(0)
 				healthBar.MAX_HP -=20
 				healthBar.hp = min(healthBar.hp,healthBar.MAX_HP)
+				creditors = 0
+				skims = 0
+				
 		if(i==3):
 			if(lure == 0): 
 				lure_time = Time.get_ticks_msec()
@@ -147,16 +154,17 @@ func _physics_process(delta: float) -> void:
 				healthBar.damaged(healthBar.hp-1)
 				scams[1]-=1
 			if(i == 2):
-				pass
+				skims+=1
+				get_parent().modulate = Color(ceil(255/(1+skims)),ceil(255/(1+skims)),ceil(255/(1+skims)))
+				scams[2]-=1
 			if(i == 3):
-				pass
-			if(i == 4):
 				var instance = rug.instantiate()
 				instance.global_position = Vector2(global_position.x+1000,global_position.y+1000)
 				main.add_child(instance)
+				scams[3]-=1
+			if(i == 4):
+				creditors+=1
 				scams[4]-=1
-			if(i == 5):
-				pass
 			
 	if slashAnimation.animation != "default":  # your attack anim
 			#slashAnimation.play("default")
@@ -219,7 +227,8 @@ func _on_attack_area_area_entered(area: Area2D) -> void:
 
 
 func _on_merchant_timer_timeout() -> void:
-	var instance = merchant.instantiate()
+	var instance
+	instance = merchant.instantiate()
 	var spawnLoc = randi_range(1, 4)
 	var xOffset
 	var yOffset
@@ -237,3 +246,25 @@ func _on_merchant_timer_timeout() -> void:
 		yOffset = randi_range(-750, -600)
 	instance.global_position = Vector2(global_position.x - xOffset, global_position.y - yOffset)
 	main.add_child.call_deferred(instance)
+
+
+func _on_creditor_timer_timeout() -> void:
+	for i in range(creditors):
+		var instance = creditor.instantiate()
+		var spawnLoc = randi_range(1, 4)
+		var xOffset
+		var yOffset
+		if(spawnLoc == 1):
+			xOffset = randi_range(-1250, -1000)
+			yOffset = randi_range(-500, 500)
+		elif(spawnLoc == 2):
+			xOffset = randi_range(1000, 1250)
+			yOffset = randi_range(-500, 500)
+		elif(spawnLoc == 3):
+			xOffset = randi_range(-900, 900)
+			yOffset = randi_range(600, 750)
+		else:
+			xOffset = randi_range(-900, 900)
+			yOffset = randi_range(-750, -600)
+		instance.global_position = Vector2(global_position.x - xOffset, global_position.y - yOffset)
+		main.add_child.call_deferred(instance)

@@ -23,17 +23,16 @@ var description_to_artifact_list = [
 	"Damage increases by 0.04% every second",
 	"Masssively increases Damage and AOE at the cost of your hp"
 ]
-var name_to_scam_list = ["Identity Theft","Advance Payment","Skimming","Impersonate Family","Rug Pull","Ponzi Scheme"]
+var name_to_scam_list = ["Identity Theft","Advance Payment","Skimming","Rug Pull","Ponzi Scheme"]
 var description_to_scam_list = [
 	"Identity theft is not a joke jim, millions of people suffer from it every year (gives a random scam debuff)",
 	"No money? PAY WITH YOUR LIFE!! (sets hp to 1)",
 	"Gives an overlay to your screen",
-	"Can you babysit my child real quick? (Increases your hitbox)",
 	"rug",
 	"Creditor Enemies will now spawn"
 	]
 var total_artifacts = range(0,9)
-var total_scams = range(0,6)
+var total_scams = range(0,5)
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	get_tree().paused = true
