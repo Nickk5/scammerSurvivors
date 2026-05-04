@@ -6,7 +6,8 @@ var level = 1
 var Max_XP = BASE_XP * level * level;
 var current_xp = 0;
 @onready var label: Label = $"../Label"
-
+@onready var skill_ui = preload("res://Scenes/Game/skill_ui.tscn")
+@onready var player = get_tree().get_first_node_in_group("player")
 
 
 
@@ -34,6 +35,10 @@ func levelUp():
 		current_xp = 0
 		label.text = "LV "+str(level)
 		updateXP(level)
+		var instance = skill_ui.instantiate()
+		player.add_child(instance)
+		instance.global_position = player.global_position
+		get_tree().paused = true
 	
 
 func addXP(amount):

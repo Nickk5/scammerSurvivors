@@ -22,7 +22,7 @@ func _physics_process(delta: float) -> void:
 	var angle = Vector2.RIGHT.rotated(global_position.angle_to_point(player_pos))
 	velocity = angle * SPEED
 	if($HurtBox.overlaps_body(player)):
-		healthBar.damaged(DAMAGE*delta)
+		healthBar.damaged((DAMAGE-player.defense)*delta)
 		if(player.cactus):
 			health = 0
 			on_kill()

@@ -12,12 +12,14 @@ extends CharacterBody2D
 @onready var healthBar = get_tree().get_first_node_in_group("healthBar")
 @onready var enemy_timer = get_tree().get_first_node_in_group("enemy_timer")
 @onready var dmg_label = get_tree().get_first_node_in_group("dmg_label")
-const SPEED = 300.0
+var SPEED = 300.0
 const CLOAKER_CHANCE = 25
 const total_scams = 5
 var artifacts = []
 var scams = []
 var base_dmg = 100
+var defense = 50
+var regen = 5
 var dmg = 0
 var additional_dmg = 0
 var start_time
@@ -170,7 +172,7 @@ func _physics_process(delta: float) -> void:
 			#slashAnimation.play("default")
 			slashAnimation.play("default")
 			perform_attack()
-
+	healthBar.damaged(-1*regen*delta)
 
 				
 		

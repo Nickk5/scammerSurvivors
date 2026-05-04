@@ -9,10 +9,14 @@ func _ready() -> void:
 	
 func damaged(damage):
 	hp -= damage
+	if(hp >= MAX_HP):
+		hp = MAX_HP
+	if(hp <= 0):
+		hp = 0
 	health_bar.value = hp
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if(hp >= MAX_HP):
 		hp = MAX_HP
 	if(hp <= 0):
-		pass
+		hp = 0
