@@ -4,8 +4,9 @@ extends CharacterBody2D
 @onready var merchant_ui = preload("res://Scenes/Game/merchant_ui.tscn")
 @onready var main = get_tree().get_first_node_in_group("main")
 const smoochDistance = 50
-func _ready() -> void:
-	pass
+@export var spawnPos : Vector2
+func _ready():
+	global_position = spawnPos
 
 
 func _physics_process(delta: float) -> void:

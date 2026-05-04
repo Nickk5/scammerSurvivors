@@ -337,6 +337,8 @@ offset_bottom = 531.0
 text = "DMG: 50"
 
 [node name="creditor_timer" type="Timer" parent="Player" unique_id=780845795]
+wait_time = 2.0
+autostart = true
 
 [node name="Placeholdermap" type="Sprite2D" parent="." unique_id=1726512810]
 position = Vector2(986.99994, -1196.0001)

@@ -23,6 +23,17 @@ var description_to_artifact_list = [
 	"Damage increases by 0.04% every second",
 	"Masssively increases Damage and AOE at the cost of your hp"
 ]
+var artifact_images = [
+	"res://Assets/Sprites/Screenshot 2026-05-04 023335.png",
+	"res://Assets/Sprites/Screenshot 2026-05-04 023352.png",
+	"res://Assets/Sprites/Screenshot 2026-05-04 023423.png",
+	"res://Assets/Sprites/Screenshot 2026-05-04 023434.png",
+	"res://Assets/Sprites/Screenshot 2026-05-04 025739.png",
+	"res://Assets/Sprites/Screenshot 2026-05-04 025812.png",
+	"res://Assets/Sprites/Screenshot 2026-05-04 023733.png",
+	"res://Assets/Sprites/Screenshot 2026-05-04 023749.png",
+	"res://Assets/Sprites/Screenshot 2026-05-04 023757.png"
+]
 var name_to_scam_list = ["Identity Theft","Advance Payment","Skimming","Rug Pull","Ponzi Scheme"]
 var description_to_scam_list = [
 	"Identity theft is not a joke jim, millions of people suffer from it every year (gives a random scam debuff)",
@@ -52,20 +63,26 @@ func _ready() -> void:
 	s2 = total_scams.pick_random()
 	s3 = total_scams.pick_random()
 	if(a1 == null):
+		get_child(4).texture = load("res://Assets/Sprites/Screenshot 2026-03-26 084259.png")
 		artifact_1.text = "no more artifacts left"
 	else:
+		get_child(4).texture = load(artifact_images[a1])
 		artifact_1.text = name_to_artifact_list[a1]+" - "+description_to_artifact_list[a1]+"\n"+name_to_scam_list[s1]+" - "+description_to_scam_list[s1]
 		if(player.credit_card):
 			artifact_1.text = name_to_artifact_list[a1]+" - "+description_to_artifact_list[a1]
 	if(a2 == null):
+		get_child(5).texture = load("res://Assets/Sprites/Screenshot 2026-03-26 084259.png")
 		artifact_2.text = "no more artifacts left"
 	else:
+		get_child(5).texture = load(artifact_images[a2])
 		artifact_2.text = name_to_artifact_list[a2]+" - "+description_to_artifact_list[a2]+"\n"+name_to_scam_list[s2]+" - "+description_to_scam_list[s2]
 		if(player.credit_card):
 			artifact_2.text = name_to_artifact_list[a2]+" - "+description_to_artifact_list[a2]
 	if(a3 == null):
+		get_child(6).texture = load("res://Assets/Sprites/Screenshot 2026-03-26 084259.png")
 		artifact_3.text = "no more artifacts left"
 	else:
+		get_child(6).texture = load(artifact_images[a3])
 		artifact_3.text = name_to_artifact_list[a3]+" - "+description_to_artifact_list[a3]+"\n"+name_to_scam_list[s3]+" - "+description_to_scam_list[s3]
 		if(player.credit_card):
 			artifact_3.text = name_to_artifact_list[a3]+" - "+description_to_artifact_list[a3]

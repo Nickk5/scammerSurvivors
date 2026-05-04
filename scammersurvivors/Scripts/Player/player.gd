@@ -97,6 +97,8 @@ func _physics_process(delta: float) -> void:
 				healthBar.hp = min(healthBar.hp,healthBar.MAX_HP)
 				creditors = 0
 				skims = 0
+				get_parent().modulate = Color(1.0/(1+skims),1.0/(1+skims),1.0/(1+skims))
+				used_dead_ringer = true
 				
 		if(i==3):
 			if(lure == 0): 
@@ -155,12 +157,10 @@ func _physics_process(delta: float) -> void:
 				scams[1]-=1
 			if(i == 2):
 				skims+=1
-				get_parent().modulate = Color(ceil(255/(1+skims)),ceil(255/(1+skims)),ceil(255/(1+skims)))
+				get_parent().modulate = Color(1.0/(1+skims),1.0/(1+skims),1.0/(1+skims))
 				scams[2]-=1
 			if(i == 3):
-				var instance = rug.instantiate()
-				instance.global_position = Vector2(global_position.x+1000,global_position.y+1000)
-				main.add_child(instance)
+				spawnEnemy(rug)
 				scams[3]-=1
 			if(i == 4):
 				creditors+=1
@@ -177,12 +177,9 @@ func _physics_process(delta: float) -> void:
 				
 		
 
-func spawnEnemy():
+func spawnEnemy(mob):
 	var instance
-	if (randi_range(1,100) <= CLOAKER_CHANCE):
-		instance = cloaker.instantiate() #was cloaker before
-	else:
-		instance = enemy.instantiate()
+	instance = mob.instantiate()
 	var spawnLoc = randi_range(1, 4)
 	var xOffset
 	var yOffset
@@ -202,7 +199,10 @@ func spawnEnemy():
 	main.add_child.call_deferred(instance)
 
 func _on_spawn_timer_timeout() -> void:
-	spawnEnemy()
+	if (randi_range(1,100) <= CLOAKER_CHANCE):
+		spawnEnemy(cloaker) #was cloaker before
+	else:
+		spawnEnemy(enemy)
 	pass # Replace with function body.
 	
 	
@@ -227,44 +227,9 @@ func _on_attack_area_area_entered(area: Area2D) -> void:
 
 
 func _on_merchant_timer_timeout() -> void:
-	var instance
-	instance = merchant.instantiate()
-	var spawnLoc = randi_range(1, 4)
-	var xOffset
-	var yOffset
-	if(spawnLoc == 1):
-		xOffset = randi_range(-1250, -1000)
-		yOffset = randi_range(-500, 500)
-	elif(spawnLoc == 2):
-		xOffset = randi_range(1000, 1250)
-		yOffset = randi_range(-500, 500)
-	elif(spawnLoc == 3):
-		xOffset = randi_range(-900, 900)
-		yOffset = randi_range(600, 750)
-	else:
-		xOffset = randi_range(-900, 900)
-		yOffset = randi_range(-750, -600)
-	instance.global_position = Vector2(global_position.x - xOffset, global_position.y - yOffset)
-	main.add_child.call_deferred(instance)
+	spawnEnemy(merchant)
 
 
 func _on_creditor_timer_timeout() -> void:
 	for i in range(creditors):
-		var instance = creditor.instantiate()
-		var spawnLoc = randi_range(1, 4)
-		var xOffset
-		var yOffset
-		if(spawnLoc == 1):
-			xOffset = randi_range(-1250, -1000)
-			yOffset = randi_range(-500, 500)
-		elif(spawnLoc == 2):
-			xOffset = randi_range(1000, 1250)
-			yOffset = randi_range(-500, 500)
-		elif(spawnLoc == 3):
-			xOffset = randi_range(-900, 900)
-			yOffset = randi_range(600, 750)
-		else:
-			xOffset = randi_range(-900, 900)
-			yOffset = randi_range(-750, -600)
-		instance.global_position = Vector2(global_position.x - xOffset, global_position.y - yOffset)
-		main.add_child.call_deferred(instance)
+		spawnEnemy(creditor)
