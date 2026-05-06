@@ -334,7 +334,7 @@ offset_left = -920.0
 offset_top = 508.0
 offset_right = -832.0
 offset_bottom = 531.0
-text = "DMG: 50"
+text = "DMG: 100"
 
 [node name="creditor_timer" type="Timer" parent="Player" unique_id=780845795]
 wait_time = 2.0

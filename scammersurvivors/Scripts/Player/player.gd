@@ -18,8 +18,8 @@ const total_scams = 5
 var artifacts = []
 var scams = []
 var base_dmg = 100
-var defense = 50
-var regen = 5
+var defense = 0
+var regen = 0
 var dmg = 0
 var additional_dmg = 0
 var start_time

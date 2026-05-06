@@ -32,6 +32,7 @@ func _physics_process(delta: float) -> void:
 		healthBar.damaged((DAMAGE-player.defense)*delta)
 		if(player.cactus):
 			health = 0
+			healthBar.damaged((DAMAGE-player.defense))
 			on_kill()
 	move_and_slide()
 	on_kill()
