@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://dq72b0jfr7phr"]
+
+[ext_resource type="Script" uid="uid://dgip6xdwnqb34" path="res://Scripts/Enemies/boss.gd" id="1_ayfg3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wqp4l"]
+size = Vector2(52, 54)
+
+[node name="FireSpirit" type="CharacterBody2D" unique_id=126478757]
+z_index = 95
+position = Vector2(0, -6)
+collision_mask = 0
+script = ExtResource("1_ayfg3")
+metadata/_edit_group_ = true
+
+[node name="HurtBox" type="Area2D" parent="." unique_id=1607771969 groups=["enemy"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox" unique_id=1754448159]
+position = Vector2(26, 13)
+shape = SubResource("RectangleShape2D_wqp4l")
+one_way_collision_margin = 0.0
+
+[node name="Timer" type="Timer" parent="." unique_id=1305007345]
+wait_time = 3.0
+autostart = true
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=78661661]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

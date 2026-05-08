@@ -12,6 +12,8 @@ extends CharacterBody2D
 @onready var healthBar = get_tree().get_first_node_in_group("healthBar")
 @onready var enemy_timer = get_tree().get_first_node_in_group("enemy_timer")
 @onready var dmg_label = get_tree().get_first_node_in_group("dmg_label")
+@onready var boss = load("res://Scenes/Enemies/boss.tscn")
+
 var SPEED = 300.0
 const CLOAKER_CHANCE = 25
 const total_scams = 5
@@ -43,6 +45,11 @@ func get_input():
 	var input_direction = Input.get_vector("left", "right", "up", "down")
 	velocity = input_direction.normalized() * SPEED
 
+func spawnBoss() -> void:
+	var instance = boss.instantiate()
+	instance.spawnPos = Vector2(global_position.x, global_position.y - 500)
+	main.add_child.call_deferred(instance)
+
 func _ready():
 	scams.resize(total_scams)
 	scams.fill(0)
@@ -51,6 +58,7 @@ func _ready():
 	playerAnimation.play("default")
 	slashAnimation.animation = "idle"
 	slashAnimation.animation_finished.connect(_on_slash_finished)
+	spawnBoss()
 func _physics_process(delta: float) -> void:
 	artifacts.sort()
 #	var directionX = 0.0
@@ -198,7 +206,7 @@ func spawnEnemy(mob):
 		xOffset = randi_range(-900, 900)
 		yOffset = randi_range(-750, -600)
 	instance.spawnPos = Vector2(global_position.x - xOffset, global_position.y - yOffset)
-	main.add_child.call_deferred(instance)
+	#main.add_child.call_deferred(instance)
 
 func _on_spawn_timer_timeout() -> void:
 	if (randi_range(1,100) <= CLOAKER_CHANCE):
