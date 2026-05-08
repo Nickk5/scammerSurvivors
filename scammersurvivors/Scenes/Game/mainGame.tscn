@@ -17,10 +17,10 @@
 [ext_resource type="Texture2D" uid="uid://daadqq1ij2pss" path="res://Assets/Sprites/Animations/attack1/frame_06_delay-0.1s.png" id="15_6xnvv"]
 [ext_resource type="Texture2D" uid="uid://d18oa8ccv2t48" path="res://Assets/Sprites/Animations/attack1/frame_08_delay-0.1s.png" id="16_wsmhl"]
 [ext_resource type="Texture2D" uid="uid://dlo65md4t6bsb" path="res://Assets/Sprites/Animations/attack1/frame_09_delay-0.1s.png" id="17_8x6bc"]
-[ext_resource type="Texture2D" uid="uid://bl4sgqfdfngtc" path="res://Assets/Sprites/Maps/placeholdermap.png" id="18_r7q3j"]
+[ext_resource type="Texture2D" uid="uid://crmyikgd54m4k" path="res://Assets/Sprites/Maps/tile grass 3.png" id="18_q38pv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jw2ra"]
-size = Vector2(64, 86)
+size = Vector2(128, 98)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tb1jv"]
 corner_radius_top_left = 7
@@ -234,9 +234,9 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("17_8x6bc")
 }],
-"loop": true,
+"loop": false,
 "name": &"default",
-"speed": 5.0
+"speed": 3.0
 }, {
 "frames": [],
 "loop": true,
@@ -247,7 +247,7 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ypejj"]
 size = Vector2(128, 98)
 
-[node name="main" type="Node2D" unique_id=1005549420]
+[node name="main" type="Node2D" unique_id=1005549420 groups=["main"]]
 
 [node name="Player" type="CharacterBody2D" parent="." unique_id=707153523 groups=["player"]]
 unique_name_in_owner = true
@@ -260,6 +260,7 @@ metadata/_edit_group_ = true
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=1422285641]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player" unique_id=952396549]
+position = Vector2(5, -1)
 shape = SubResource("RectangleShape2D_jw2ra")
 
 [node name="healthBar" type="ProgressBar" parent="Player" unique_id=1797890277 groups=["healthBar"]]
@@ -304,7 +305,7 @@ frame_progress = 0.73709995
 wait_time = 10.0
 autostart = true
 
-[node name="spawnTimer" type="Timer" parent="Player" unique_id=488437501]
+[node name="spawnTimer" type="Timer" parent="Player" unique_id=488437501 groups=["enemy_timer"]]
 wait_time = 2.0
 autostart = true
 
@@ -328,14 +329,33 @@ disabled = true
 wait_time = 2.0
 autostart = true
 
-[node name="Placeholdermap" type="Sprite2D" parent="." unique_id=1726512810]
-position = Vector2(986.99994, -1196.0001)
-scale = Vector2(6.4783335, 6.325)
-texture = ExtResource("18_r7q3j")
+[node name="dmg_label" type="Label" parent="Player" unique_id=110758319 groups=["dmg_label"]]
+offset_left = -920.0
+offset_top = 508.0
+offset_right = -832.0
+offset_bottom = 531.0
+text = "DMG: 50"
+
+[node name="creditor_timer" type="Timer" parent="Player" unique_id=780845795]
+wait_time = 2.0
+autostart = true
+
+[node name="SlashTimer" type="Timer" parent="Player" unique_id=504892405]
+autostart = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=2130917585]
+
+[node name="Parallax2D" type="Parallax2D" parent="." unique_id=1659609157]
+texture_filter = 1
+repeat_size = Vector2(128, 128)
+repeat_times = 60
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D" unique_id=155162958]
+texture = ExtResource("18_q38pv")
 
 [connection signal="timeout" from="Player/skorbTimer" to="Player" method="_on_skorb_timer_timeout"]
 [connection signal="timeout" from="Player/spawnTimer" to="Player" method="_on_spawn_timer_timeout"]
 [connection signal="area_entered" from="Player/AttackArea" to="Player" method="_on_attack_area_area_entered"]
 [connection signal="timeout" from="Player/MerchantTimer" to="Player" method="_on_merchant_timer_timeout"]
+[connection signal="timeout" from="Player/creditor_timer" to="Player" method="_on_creditor_timer_timeout"]
+[connection signal="timeout" from="Player/SlashTimer" to="Player" method="_on_slash_timer_timeout"]

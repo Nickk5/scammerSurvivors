@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://83uh0821feuv"]
+
+[ext_resource type="Texture2D" uid="uid://bux1cr5a530cf" path="res://Assets/Sprites/Screenshot 2026-03-26 084259.png" id="1_3pt70"]
+[ext_resource type="Script" uid="uid://odnvdj4ui5mm" path="res://Scripts/Enemies/merchant.gd" id="1_m7x22"]
+
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=675279139]
+script = ExtResource("1_m7x22")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=762670105]
+position = Vector2(3, 3)
+scale = Vector2(0.561232, 0.6323171)
+texture = ExtResource("1_3pt70")

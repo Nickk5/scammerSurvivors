@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://dxkmfwcbooi3q"]
+
+[ext_resource type="Script" uid="uid://chkuqdxhpvqwt" path="res://Scripts/Enemies/mob.gd" id="1_42f74"]
+[ext_resource type="Texture2D" uid="uid://c1lemx2bet0o" path="res://Assets/Sprites/Screenshot 2026-04-30 091055.png" id="2_42f74"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ldhqc"]
+size = Vector2(120, 125)
+
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=1440264715]
+script = ExtResource("1_42f74")
+DAMAGE = 75
+health = 250
+xp = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=28187494]
+position = Vector2(2, 0)
+scale = Vector2(0.815658, 0.57459813)
+texture = ExtResource("2_42f74")
+
+[node name="HurtBox" type="Area2D" parent="." unique_id=638435318 groups=["enemy"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox" unique_id=338205270]
+position = Vector2(2, 0.5)
+shape = SubResource("RectangleShape2D_ldhqc")
