@@ -299,7 +299,6 @@ position = Vector2(15.999998, -1.7949979)
 scale = Vector2(0.25, 0.25113887)
 sprite_frames = SubResource("SpriteFrames_q556t")
 animation = &"idle_right"
-frame_progress = 0.73709995
 
 [node name="skorbTimer" type="Timer" parent="Player" unique_id=1691624092]
 wait_time = 10.0
@@ -326,7 +325,7 @@ disabled = true
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Player" unique_id=1876000749]
 
 [node name="MerchantTimer" type="Timer" parent="Player" unique_id=838440853]
-wait_time = 2.0
+wait_time = 30.0
 autostart = true
 
 [node name="dmg_label" type="Label" parent="Player" unique_id=110758319 groups=["dmg_label"]]

@@ -20,8 +20,7 @@ func on_kill():
 
 func _physics_process(delta: float) -> void:
 
-	if(get_child(0).get_child_count() > 0):
-		$Sprite2D/AnimationPlayer.play("default")
+	$AnimatedSprite2D.play("default")
 
 	if(Input.is_key_pressed(KEY_K)):
 		queue_free()

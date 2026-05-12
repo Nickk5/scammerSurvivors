@@ -1,12 +1,35 @@
 [gd_scene format=3 uid="uid://83uh0821feuv"]
 
-[ext_resource type="Texture2D" uid="uid://bux1cr5a530cf" path="res://Assets/Sprites/Screenshot 2026-03-26 084259.png" id="1_3pt70"]
 [ext_resource type="Script" uid="uid://odnvdj4ui5mm" path="res://Scripts/Enemies/merchant.gd" id="1_m7x22"]
+[ext_resource type="Texture2D" uid="uid://jlrajdp80liv" path="res://Assets/Everything Rand made that we are implementing in 3 seconds/merchant peddler.png" id="2_m7x22"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_evmlo"]
+atlas = ExtResource("2_m7x22")
+region = Rect2(0, 0, 25, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g2pjq"]
+atlas = ExtResource("2_m7x22")
+region = Rect2(25, 0, 25, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hgjc3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_evmlo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g2pjq")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=675279139]
 script = ExtResource("1_m7x22")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=762670105]
-position = Vector2(3, 3)
-scale = Vector2(0.561232, 0.6323171)
-texture = ExtResource("1_3pt70")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1787443365]
+texture_filter = 1
+position = Vector2(-3.8146973e-06, -1.9999995)
+scale = Vector2(5.08, 4.3749995)
+sprite_frames = SubResource("SpriteFrames_hgjc3")

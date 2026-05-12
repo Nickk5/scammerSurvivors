@@ -1,21 +1,44 @@
 [gd_scene format=3 uid="uid://dxkmfwcbooi3q"]
 
 [ext_resource type="Script" uid="uid://chkuqdxhpvqwt" path="res://Scripts/Enemies/mob.gd" id="1_42f74"]
-[ext_resource type="Texture2D" uid="uid://c1lemx2bet0o" path="res://Assets/Sprites/Screenshot 2026-04-30 091055.png" id="2_42f74"]
+[ext_resource type="Texture2D" uid="uid://fb54iuslwpqn" path="res://Assets/Everything Rand made that we are implementing in 3 seconds/merchant salesman.png" id="2_42f74"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wxkm3"]
+atlas = ExtResource("2_42f74")
+region = Rect2(16, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8vu5x"]
+atlas = ExtResource("2_42f74")
+region = Rect2(0, 0, 16, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8smsg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wxkm3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8vu5x")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ldhqc"]
 size = Vector2(120, 125)
 
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=1440264715]
 script = ExtResource("1_42f74")
-DAMAGE = 75
+DAMAGE = 20
 health = 250
 xp = 0
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=28187494]
-position = Vector2(2, 0)
-scale = Vector2(0.815658, 0.57459813)
-texture = ExtResource("2_42f74")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=963297062]
+texture_filter = 1
+position = Vector2(2.000004, 2.499998)
+scale = Vector2(7.625, 3.90625)
+sprite_frames = SubResource("SpriteFrames_8smsg")
 
 [node name="HurtBox" type="Area2D" parent="." unique_id=638435318 groups=["enemy"]]
 

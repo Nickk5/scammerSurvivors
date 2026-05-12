@@ -58,7 +58,7 @@ func _ready():
 	playerAnimation.play("default")
 	slashAnimation.animation = "idle"
 	slashAnimation.animation_finished.connect(_on_slash_finished)
-	spawnBoss()
+	#spawnBoss()
 func _physics_process(delta: float) -> void:
 	artifacts.sort()
 #	var directionX = 0.0
@@ -206,10 +206,10 @@ func spawnEnemy(mob):
 		xOffset = randi_range(-900, 900)
 		yOffset = randi_range(-750, -600)
 	instance.spawnPos = Vector2(global_position.x - xOffset, global_position.y - yOffset)
-	#main.add_child.call_deferred(instance)
+	main.add_child.call_deferred(instance)
 
 func _on_spawn_timer_timeout() -> void:
-	if (randi_range(1,100) <= CLOAKER_CHANCE):
+	if (randi_range(1,100) <= CLOAKER_CHANCE && Time.get_ticks_msec()-start_time >=120000):
 		spawnEnemy(cloaker) #was cloaker before
 	else:
 		spawnEnemy(enemy)

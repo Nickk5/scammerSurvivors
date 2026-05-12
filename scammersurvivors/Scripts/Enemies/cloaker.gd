@@ -5,7 +5,7 @@ extends CharacterBody2D
 @export var SPEED = 100.0
 @export var SPEED_UP = 10
 @export var CHARGE_DISTANCE = 500
-@export var DAMAGE = 100
+@export var DAMAGE = 10
 @export var HIT_RADIUS = 75
 @export var health = 100
 @export var spawnPos : Vector2
@@ -21,6 +21,7 @@ func _physics_process(delta: float) -> void:
 	var player_pos = get_tree().get_first_node_in_group("player").global_position
 	var angle = Vector2.RIGHT.rotated(global_position.angle_to_point(player_pos))
 	velocity = angle * SPEED
+	$AnimatedSprite2D.play("default")
 	if($HurtBox.overlaps_body(player)):
 		healthBar.damaged((DAMAGE-player.defense)*delta)
 		if(player.cactus):
@@ -31,9 +32,13 @@ func _physics_process(delta: float) -> void:
 		velocity*=SPEED_UP
 		if(!$AudioStreamPlayer2D.playing):
 			$AudioStreamPlayer2D.play()
+		$AnimatedSprite2D.pause()
+		$AnimatedSprite2D.play("sprint")
 	else:
 		velocity = angle*SPEED
 		if($AudioStreamPlayer2D.playing):
 			$AudioStreamPlayer2D.stop()
+		$AnimatedSprite2D.pause()
+		$AnimatedSprite2D.play("default")
 	move_and_slide()
 	on_kill()

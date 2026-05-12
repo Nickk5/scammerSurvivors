@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://do1cfd8scgw5t"]
 
 [ext_resource type="Script" uid="uid://biuh8sgullvt8" path="res://Scripts/Game/merchant_ui.gd" id="1_mfwcc"]
-[ext_resource type="Texture2D" uid="uid://bux1cr5a530cf" path="res://Assets/Sprites/Screenshot 2026-03-26 084259.png" id="2_5tqwr"]
+[ext_resource type="Texture2D" uid="uid://cu4qixplr1tof" path="res://Assets/Everything Rand made that we are implementing in 3 seconds/portrait peddler.png" id="2_5tqwr"]
 
 [node name="Merchant UI" type="Control" unique_id=541207955 groups=["merchant_ui"]]
 process_mode = 3
@@ -65,12 +65,14 @@ metadata/_edit_use_anchors_ = true
 
 [node name="Screenshot20260326084259" type="Sprite2D" parent="." unique_id=924933457]
 show_behind_parent = true
-position = Vector2(-643, 87.000015)
-scale = Vector2(1.6376812, 2.7268293)
+texture_filter = 1
+position = Vector2(-676.99994, 71.50004)
+scale = Vector2(18.312496, 15.593748)
 texture = ExtResource("2_5tqwr")
 
 [node name="Image_1" type="TextureRect" parent="." unique_id=821792611]
 show_behind_parent = true
+texture_filter = 1
 layout_mode = 0
 offset_left = -310.99994
 offset_top = -170.99997
@@ -81,6 +83,7 @@ texture = ExtResource("2_5tqwr")
 
 [node name="Image_2" type="TextureRect" parent="." unique_id=816858434]
 show_behind_parent = true
+texture_filter = 1
 layout_mode = 0
 offset_left = -309.0
 offset_top = -13.0
@@ -91,6 +94,7 @@ texture = ExtResource("2_5tqwr")
 
 [node name="Image_3" type="TextureRect" parent="." unique_id=1888569454]
 show_behind_parent = true
+texture_filter = 1
 layout_mode = 0
 offset_left = -311.0
 offset_top = 154.99998

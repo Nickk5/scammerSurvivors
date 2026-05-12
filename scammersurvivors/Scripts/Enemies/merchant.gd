@@ -10,6 +10,7 @@ func _ready():
 
 
 func _physics_process(delta: float) -> void:
+	$AnimatedSprite2D.play("default")
 	if(global_position.distance_to(player.global_position) <= smoochDistance):
 		var instance = merchant_ui.instantiate()
 		player.add_child(instance)

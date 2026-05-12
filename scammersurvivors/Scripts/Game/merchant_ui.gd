@@ -24,15 +24,15 @@ var description_to_artifact_list = [
 	"Masssively increases Damage and AOE at the cost of your hp"
 ]
 var artifact_images = [
-	"res://Assets/Sprites/Screenshot 2026-05-04 023335.png",
-	"res://Assets/Sprites/Screenshot 2026-05-04 023352.png",
-	"res://Assets/Sprites/Screenshot 2026-05-04 023423.png",
-	"res://Assets/Sprites/Screenshot 2026-05-04 023434.png",
-	"res://Assets/Sprites/Screenshot 2026-05-04 025739.png",
-	"res://Assets/Sprites/Screenshot 2026-05-04 025812.png",
-	"res://Assets/Sprites/Screenshot 2026-05-04 023733.png",
-	"res://Assets/Sprites/Screenshot 2026-05-04 023749.png",
-	"res://Assets/Sprites/Screenshot 2026-05-04 023757.png"
+	"res://Assets/Everything Rand made that we are implementing in 3 seconds/artifacts/artifact credit card.png",
+	"res://Assets/Everything Rand made that we are implementing in 3 seconds/artifacts/artifact blade of grass.png",
+	"res://Assets/Everything Rand made that we are implementing in 3 seconds/artifacts/artifact dead ringer.png",
+	"res://Assets/Everything Rand made that we are implementing in 3 seconds/artifacts/artifact lure module.png",
+	"res://Assets/Everything Rand made that we are implementing in 3 seconds/artifacts/artifact repel.png",
+	"res://Assets/Everything Rand made that we are implementing in 3 seconds/artifacts/artifact long term scaling.png",
+	"res://Assets/Everything Rand made that we are implementing in 3 seconds/artifacts/artifact essence of cactus.png",
+	"res://Assets/Everything Rand made that we are implementing in 3 seconds/artifacts/artifact bank interest.png",
+	"res://Assets/Everything Rand made that we are implementing in 3 seconds/artifacts/artifact glass cannon.png"
 ]
 var name_to_scam_list = ["Identity Theft","Advance Payment","Skimming","Rug Pull","Ponzi Scheme"]
 var description_to_scam_list = [
@@ -63,7 +63,7 @@ func _ready() -> void:
 	s2 = total_scams.pick_random()
 	s3 = total_scams.pick_random()
 	if(a1 == null):
-		get_child(4).texture = load("res://Assets/Sprites/Screenshot 2026-03-26 084259.png")
+		get_child(4).texture = load("res://Assets/Everything Rand made that we are implementing in 3 seconds/portrait peddler.png")
 		artifact_1.text = "no more artifacts left"
 	else:
 		get_child(4).texture = load(artifact_images[a1])
@@ -71,7 +71,7 @@ func _ready() -> void:
 		if(player.credit_card):
 			artifact_1.text = name_to_artifact_list[a1]+" - "+description_to_artifact_list[a1]
 	if(a2 == null):
-		get_child(5).texture = load("res://Assets/Sprites/Screenshot 2026-03-26 084259.png")
+		get_child(5).texture = load("res://Assets/Everything Rand made that we are implementing in 3 seconds/portrait peddler.png")
 		artifact_2.text = "no more artifacts left"
 	else:
 		get_child(5).texture = load(artifact_images[a2])
@@ -79,7 +79,7 @@ func _ready() -> void:
 		if(player.credit_card):
 			artifact_2.text = name_to_artifact_list[a2]+" - "+description_to_artifact_list[a2]
 	if(a3 == null):
-		get_child(6).texture = load("res://Assets/Sprites/Screenshot 2026-03-26 084259.png")
+		get_child(6).texture = load("res://Assets/Everything Rand made that we are implementing in 3 seconds/portrait peddler.png")
 		artifact_3.text = "no more artifacts left"
 	else:
 		get_child(6).texture = load(artifact_images[a3])
