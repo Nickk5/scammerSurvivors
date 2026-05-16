@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://cm8fa6uj7xu5h"]
+
+[ext_resource type="Script" uid="uid://dlh05fbircxyi" path="res://Scripts/Game/start_screen.gd" id="1_438y5"]
+[ext_resource type="Texture2D" uid="uid://cs5cmjokxc7wk" path="res://Assets/Everything Rand made that we are implementing in 3 seconds/menu.png" id="2_4c8jd"]
+
+[node name="StartScreen" type="Control" unique_id=1156217708]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_438y5")
+
+[node name="Button" type="Button" parent="." unique_id=1909878034]
+layout_mode = 0
+offset_left = 489.0
+offset_top = 265.0
+offset_right = 585.0
+offset_bottom = 296.0
+text = "Start Game"
+
+[node name="not screenshot" type="Sprite2D" parent="." unique_id=1153530592]
+show_behind_parent = true
+texture_filter = 1
+position = Vector2(533, 277.00003)
+scale = Vector2(17.975117, 15.777101)
+texture = ExtResource("2_4c8jd")
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

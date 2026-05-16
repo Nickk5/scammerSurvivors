@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://pbkrfcqjgl5k"]
+
+[ext_resource type="Script" uid="uid://chkuqdxhpvqwt" path="res://Scripts/Enemies/mob.gd" id="1_efi8i"]
+[ext_resource type="Texture2D" uid="uid://diix8wpw72x5e" path="res://Assets/Sprites/Screenshot 2026-04-28 090114.png" id="2_3taum"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_efi8i"]
+atlas = ExtResource("2_3taum")
+region = Rect2(0, 0, 262, 221)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3taum"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_efi8i")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ldhqc"]
+size = Vector2(461, 362)
+
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=1440264715]
+script = ExtResource("1_efi8i")
+SPEED = 500.0
+DAMAGE = 200
+health = 1000
+xp = 1
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=315222393]
+position = Vector2(7.867813e-06, -1.5000021)
+scale = Vector2(1.7633588, 1.6244344)
+sprite_frames = SubResource("SpriteFrames_3taum")
+
+[node name="HurtBox" type="Area2D" parent="." unique_id=638435318 groups=["enemy"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox" unique_id=338205270]
+position = Vector2(-1.5, -2)
+shape = SubResource("RectangleShape2D_ldhqc")

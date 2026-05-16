@@ -1,0 +1,8 @@
+res://Scenes/Game/mainGame.tscn
+res://Scripts/Enemies/cloaker.gd
+res://Scripts/Enemies/mob.gd
+res://Scripts/Player/player.gd
+res://Scenes/Enemies/cloaker.tscn
+res://Scenes/Enemies/mob.tscn
+res://Scripts/Player/xp_bar.gd
+res://Scenes/Enemies/obese_merchant.tscn
